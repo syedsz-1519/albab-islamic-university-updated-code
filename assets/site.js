@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initTabs();
   initFilters();
+  initScrollAnimations();
 });
 
 /* ========== PRELOADER ========== */
@@ -238,4 +239,32 @@ function setQueryParam(name, value) {
   const params = new URLSearchParams(location.search);
   params.set(name, value);
   window.history.replaceState({}, '', `?${params.toString()}`);
+}
+
+/* ========== SCROLL ANIMATIONS ========== */
+function initScrollAnimations() {
+  const cards = document.querySelectorAll('.card, .grid > div');
+  
+  if (!cards.length) return;
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        // Stagger animation - each card animates slightly after the previous
+        const delay = index * 100; // 100ms between each card
+        setTimeout(() => {
+          entry.target.classList.add('animate-in-left');
+        }, delay);
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1, // Trigger when 10% of card is visible
+    rootMargin: '0px 0px -50px 0px' // Start animation before card fully enters viewport
+  });
+  
+  cards.forEach(card => {
+    observer.observe(card);
+  });
 }
