@@ -11,25 +11,19 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/images/icon-192x192.png",
-      "sizes": "192x192",
+      "src": "/images/logo.png",
+      "sizes": "32x32 64x64 128x128 192x192 256x256 512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/images/icon-192x192-maskable.png",
+      "src": "/images/logo.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "maskable"
     },
     {
-      "src": "/images/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/icon-512x512-maskable.png",
+      "src": "/images/logo.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
@@ -37,14 +31,14 @@
   ],
   "screenshots": [
     {
-      "src": "/images/screenshot-540x720.png",
-      "sizes": "540x720",
+      "src": "/images/logo.png",
+      "sizes": "512x512",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
-      "src": "/images/screenshot-1280x720.png",
-      "sizes": "1280x720",
+      "src": "/images/logo.png",
+      "sizes": "512x512",
       "type": "image/png",
       "form_factor": "wide"
     }
@@ -57,8 +51,8 @@
       "url": "/programmes",
       "icons": [
         {
-          "src": "/images/icon-96x96.png",
-          "sizes": "96x96",
+          "src": "/images/logo.png",
+          "sizes": "96x96 192x192 512x512",
           "type": "image/png"
         }
       ]
@@ -70,8 +64,8 @@
       "url": "/hadith",
       "icons": [
         {
-          "src": "/images/icon-96x96.png",
-          "sizes": "96x96",
+          "src": "/images/logo.png",
+          "sizes": "96x96 192x192 512x512",
           "type": "image/png"
         }
       ]
@@ -83,8 +77,8 @@
       "url": "/explore",
       "icons": [
         {
-          "src": "/images/icon-96x96.png",
-          "sizes": "96x96",
+          "src": "/images/logo.png",
+          "sizes": "96x96 192x192 512x512",
           "type": "image/png"
         }
       ]
