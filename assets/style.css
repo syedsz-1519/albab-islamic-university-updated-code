@@ -2474,9 +2474,6 @@ blockquote {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(201, 162, 75, 0.3);
   color: #f4efe0;
-  aspect-ratio: auto;
-  min-height: auto;
-  padding: 24px;
 }
 
 #focus .focus-card h3 {
@@ -2487,15 +2484,8 @@ blockquote {
 
 #focus .focus-card p {
   color: #d7e0d6;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.6;
-}
-
-#focus .focus-icon {
-  font-size: 52px;
-  margin-bottom: 16px;
-  display: block;
-  line-height: 1;
 }
 
 #focus .focus-card:hover {
@@ -2544,16 +2534,12 @@ blockquote {
 
 .focus-card:hover {
   border-color: var(--gold);
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 16px 40px rgba(201, 162, 75, 0.18);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(201, 162, 75, 0.15);
 }
 
-.focus-card:hover::before {
-  opacity: 1;
-}
-
-.focus-card:hover::after {
-  opacity: 1;
+.focus-card:hover .focus-icon {
+  transform: scale(1.1) rotate(5deg);
 }
 
 .focus-card-content {
@@ -2565,17 +2551,40 @@ blockquote {
 }
 
 .focus-icon {
-  font-size: 48px;
-  margin-bottom: 8px;
-  display: block;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
   animation: slideInDown 0.6s ease-out forwards;
-  line-height: 1;
+  flex-shrink: 0;
 }
 
-.focus-card:nth-child(1) .focus-icon { animation-delay: 0.1s; }
-.focus-card:nth-child(2) .focus-icon { animation-delay: 0.2s; }
-.focus-card:nth-child(3) .focus-icon { animation-delay: 0.3s; }
-.focus-card:nth-child(4) .focus-icon { animation-delay: 0.4s; }
+.focus-icon-1 {
+  background: linear-gradient(135deg, #c9a24b 0%, #e8c76d 100%);
+  animation-delay: 0.1s;
+}
+
+.focus-icon-2 {
+  background: linear-gradient(135deg, #e8a76d 0%, #f0c0a0 100%);
+  animation-delay: 0.2s;
+}
+
+.focus-icon-3 {
+  background: linear-gradient(135deg, #7cb9d4 0%, #a8d8f0 100%);
+  animation-delay: 0.3s;
+}
+
+.focus-icon-4 {
+  background: linear-gradient(135deg, #b8d4a8 0%, #d4f0c0 100%);
+  animation-delay: 0.4s;
+}
+
+.focus-icon svg {
+  width: 100%;
+  height: 100%;
+}
 
 .focus-card h3 {
   font-size: 18px;
