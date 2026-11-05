@@ -130,18 +130,46 @@ header .wrap {
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   font-family: var(--font-serif);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   text-decoration: none;
   color: #f4efe0;
+  transition: opacity 0.2s;
 }
 
-.brand svg {
-  width: 28px;
-  height: 32px;
+.brand:hover {
   opacity: 0.9;
+}
+
+.logo-svg {
+  width: 40px;
+  height: 48px;
+  color: #f4efe0;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.85;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
 }
 
 nav {
