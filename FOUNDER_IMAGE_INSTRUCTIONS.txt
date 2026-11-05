@@ -1,0 +1,30 @@
+FOUNDER IMAGE SETUP
+===================
+
+The HTML file is now configured to display the founder's image at:
+  images/founder-photo.jpg
+
+NEXT STEP:
+1. Save the founder photo image you provided as "founder-photo.jpg"
+2. Place it in the "images/" folder (which has been created in the project directory)
+3. The image will automatically appear on the site in the Founder section
+
+IMAGE REQUIREMENTS:
+- Format: JPG, PNG, or WebP
+- Recommended size: 400x500px or similar (portrait orientation)
+- File size: Keep under 200KB for fast loading
+- Quality: Clear, professional headshot
+
+The photo will display:
+- On desktop: On the left side of the quote with max-width of 280px
+- On mobile: Above the quote, full width
+
+If the image doesn't appear:
+1. Check that the filename is exactly "founder-photo.jpg"
+2. Verify it's in the "images/" folder
+3. Clear browser cache and refresh the page
+
+To use a different image later:
+- Replace the image in the images/ folder
+- Or update the filename in the HTML config at line ~176:
+    photo: "images/your-image-name.jpg"

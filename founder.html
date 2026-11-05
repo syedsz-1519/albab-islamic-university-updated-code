@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f3d2e">
+  <meta name="description" content="Adnan Al Farooq: Founder & Director of Albab Islamic University. Educator, content creator, and public speaker on Islamic scholarship and contemporary challenges.">
+  <meta property="og:title" content="Adnan Al Farooq | Albab Islamic University">
+  <meta property="og:description" content="Founder & Director. Educator, researcher, and guide for those seeking knowledge and spiritual growth.">
+  <link rel="canonical" href="https://al-bab-university.vercel.app/founder">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 32'%3E%3Cpath d='M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z' stroke='%23c9a24b' stroke-width='2' fill='none'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    .founder-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 40px;
+    }
+    
+    .founder-image {
+      position: relative;
+    }
+    
+    .founder-image img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+    }
+    
+    .founder-image-placeholder {
+      aspect-ratio: 3/4;
+      background: var(--line);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .founder-info h2 {
+      margin-bottom: 4px;
+    }
+    
+    .founder-title {
+      font-size: 18px;
+      color: var(--gold-dark);
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+    
+    .founder-bio {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 22px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--ink);
+      transition: all 0.2s;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .social-link:hover {
+      border-color: var(--gold);
+      color: var(--gold-dark);
+    }
+    
+    .section-divider {
+      margin: 40px 0;
+      border-top: 2px solid var(--gold);
+      padding-top: 40px;
+    }
+    
+    .content-section h3 {
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+    
+    .content-section p {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    
+    .areas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    
+    .area-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    
+    .area-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 12px rgba(201, 162, 75, 0.1);
+    }
+    
+    .area-card h4 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+    
+    .area-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin: 0;
+    }
+    
+    .quote-block {
+      background: var(--bg);
+      border-left: 3px solid var(--gold);
+      padding: 22px;
+      margin: 22px 0;
+      border-radius: var(--radius);
+    }
+    
+    .quote-block p {
+      font-size: 18px;
+      font-style: italic;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.7;
+    }
+    
+    .talks-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .talks-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .talks-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .talk-title {
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 4px;
+    }
+    
+    .talk-meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+    
+    .cta-section {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    .cta-section h3 {
+      margin-bottom: 8px;
+    }
+    
+    .cta-section p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .founder-hero {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+  </style>
+  <title>Adnan Al Farooq | Albab Islamic University</title>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand" aria-label="Albab Islamic University">
+      <svg viewBox="0 0 28 32" fill="none" aria-hidden="true">
+        <path d="M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      Albab Islamic University
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/programmes">Programmes</a>
+      <a href="/founder">Founder</a>
+      <a href="/explore">Explore</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ========== PAGE HEADER ========== -->
+<div class="page-header">
+  <div class="wrap">
+    <h1>Adnan Al Farooq</h1>
+    <p class="subtitle">Founder & Director of Albab Islamic University</p>
+  </div>
+</div>
+
+<!-- ========== FOUNDER HERO ========== -->
+<section style="padding: 56px 0; border-bottom: 1px solid var(--line);">
+  <div class="wrap">
+    <div class="founder-hero">
+      <div class="founder-image">
+        <!-- TODO: Replace with actual founder photo -->
+        <div class="founder-image-placeholder">
+          <!-- Placeholder image slot. Add your photo: -->
+          <img src="/images/founder-photo.jpg" alt="Adnan Al Farooq" style="display: none;">
+          <p>📷 Founder photo (add to /images/founder-photo.jpg)</p>
+        </div>
+      </div>
+      
+      <div class="founder-info">
+        <h2>Adnan Al Farooq</h2>
+        <p class="founder-title">Educator, Researcher & Public Speaker</p>
+        
+        <p class="founder-bio">
+          Adnan Al Farooq is an educator and content creator dedicated to preserving and contextualizing Islamic scholarship for contemporary audiences. As the founder and director of Albab Islamic University, he leads research initiatives, public talks, and educational programmes bridging classical Islamic sciences with modern challenges.
+        </p>
+        
+        <div class="social-links">
+          <a href="https://www.instagram.com/adnanalfarooq" target="_blank" rel="noopener" class="social-link">
+            📷 Instagram: @adnanalfarooq
+          </a>
+          <!-- TODO: Add YouTube channel when available -->
+          <!-- <a href="#" class="social-link">
+            ▶️ YouTube Channel
+          </a> -->
+        </div>
+        
+        <a href="/contact?subject=Speaking%20Engagement" class="btn primary">Invite for a talk</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== VISION STATEMENT ========== -->
+<section style="padding: 56px 0;">
+  <div class="wrap">
+    <div style="max-width: 700px;">
+      <h3 style="font-size: 22px; margin-bottom: 16px;">Vision</h3>
+      <div class="quote-block">
+        <p>
+          To create a generation of thinking Muslims: people who understand their faith deeply, engage with the world rigorously, and contribute to their communities with wisdom and compassion.
+        </p>
+      </div>
+      
+      <p style="color: var(--muted); font-size: 16px; line-height: 1.8; margin-top: 22px;">
+        <!-- TODO: Add personal background and education details here -->
+        Details about Adnan's background, education, and scholarly journey are being prepared for publication.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AREAS OF WORK ========== -->
+<section style="padding: 56px 0; background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="wrap">
+    <h2>Areas of focus</h2>
+    <p class="section-lead">The disciplines and topics that shape Adnan's research, teaching, and public engagement.</p>
+    
+    <div class="areas-grid">
+      <div class="area-card">
+        <h4>Philosophy</h4>
+        <p>Metaphysics, epistemology, and ethics in Islamic thought</p>
+      </div>
+      <div class="area-card">
+        <h4>Psychology</h4>
+        <p>Human behaviour, mental health, and spiritual well-being</p>
+      </div>
+      <div class="area-card">
+        <h4>Logic & Reasoning</h4>
+        <p>Classical Islamic logic and contemporary argumentation</p>
+      </div>
+      <div class="area-card">
+        <h4>Quran & Hadith</h4>
+        <p>Classical Islamic sciences and scriptural studies</p>
+      </div>
+      <div class="area-card">
+        <h4>Contemporary Ethics</h4>
+        <p>Applying Islamic principles to modern challenges</p>
+      </div>
+      <div class="area-card">
+        <h4>Fiqh & Law</h4>
+        <p>Islamic jurisprudence and comparative legal traditions</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== RESEARCH & PUBLICATIONS ========== -->
+<section style="padding: 56px 0;">
+  <div class="wrap">
+    <h2>Research & Publications</h2>
+    <p class="section-lead">Scholarly work and public engagement on Islamic and contemporary topics.</p>
+    
+    <!-- TODO: Add research papers, articles, and publications -->
+    <div style="background: var(--bg); border: 1px dashed var(--line); border-radius: var(--radius); padding: 28px; text-align: center;">
+      <p style="color: var(--muted); margin: 0;">
+        Research publications and detailed academic work are being catalogued and will be published soon.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TALKS & EVENTS ========== -->
+<section style="padding: 56px 0; background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="wrap">
+    <h2>Recent talks & events</h2>
+    <p class="section-lead">Public speaking engagements and educational initiatives.</p>
+    
+    <ul class="talks-list">
+      <li>
+        <span class="talk-title">Failed Parenting: Causes, Consequences and the Way Forward</span>
+        <span class="talk-meta">05 Nov 2026 • GRSM School, Sangram Bata, Kishtwar</span>
+      </li>
+      <li>
+        <span class="talk-title">The Awareness Movement</span>
+        <span class="talk-meta">Ongoing • Educational & social initiative</span>
+      </li>
+      <!-- TODO: Add more talks as they occur -->
+    </ul>
+  </div>
+</section>
+
+<!-- ========== MEDIA ========== -->
+<section style="padding: 56px 0;">
+  <div class="wrap">
+    <h2>Media & Resources</h2>
+    <p class="section-lead">Video content, podcasts, and educational materials.</p>
+    
+    <!-- TODO: Add YouTube channel, podcast links, etc. -->
+    <div style="background: var(--bg); border: 1px dashed var(--line); border-radius: var(--radius); padding: 28px; text-align: center;">
+      <p style="color: var(--muted); margin: 0;">
+        📹 Video content and multimedia resources are coming soon. Follow on Instagram (@adnanalfarooq) for updates.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section style="padding: 56px 0;">
+  <div class="wrap">
+    <div class="cta-section">
+      <h3>Connect with Adnan</h3>
+      <p>Have questions, collaboration ideas, or want to invite him for a talk?</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+        <a href="/contact?subject=Speaking%20Engagement" class="btn primary">Request a talk</a>
+        <a href="https://www.instagram.com/adnanalfarooq" target="_blank" rel="noopener" class="btn tertiary">Follow on Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Adnan Al Farooq</h4>
+      <p style="color: #d7e0d6; font-size: 15px; margin: 0;">Founder & Director of Albab Islamic University</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/programmes">Programmes</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/adnanalfarooq" target="_blank" rel="noopener">Adnan's Instagram</a></li>
+        <li><a href="https://www.instagram.com/albabuniversity" target="_blank" rel="noopener">University Instagram</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024–2026 Albab Islamic University. All rights reserved. Designed for Ulul Albab.</p>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+
+</body>
+</html>

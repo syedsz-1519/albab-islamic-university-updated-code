@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f3d2e">
+  <meta name="description" content="Explore Labs: Interactive modules for Islamic learning including hadith library, five pillars, dhikr timer, and scholarly tools.">
+  <meta property="og:title" content="Explore Labs | Albab Islamic University">
+  <link rel="canonical" href="https://al-bab-university.vercel.app/explore">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 32'%3E%3Cpath d='M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z' stroke='%23c9a24b' stroke-width='2' fill='none'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    .lab-row {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+      transition: all 0.2s;
+    }
+    
+    .lab-row:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 12px rgba(201, 162, 75, 0.1);
+    }
+    
+    .lab-content h3 {
+      margin-bottom: 4px;
+      font-size: 20px;
+    }
+    
+    .lab-arabic {
+      font-family: Amiri, serif;
+      font-size: 16px;
+      color: var(--gold-dark);
+      direction: rtl;
+      text-align: right;
+      margin-bottom: 8px;
+    }
+    
+    .lab-summary {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+    
+    .lab-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    
+    .lab-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 3px;
+    }
+    
+    .lab-status {
+      text-align: right;
+    }
+    
+    .lab-status.live {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .lab-status.coming-soon {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    
+    .status-badge.live {
+      background: rgba(201, 162, 75, 0.1);
+      color: var(--gold-dark);
+      border: 1px solid var(--gold);
+    }
+    
+    .status-badge.coming {
+      background: rgba(77, 95, 86, 0.1);
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }
+    
+    .category-filter {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    
+    .filter-chip {
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .filter-chip:hover {
+      border-color: var(--gold);
+      color: var(--gold-dark);
+    }
+    
+    .filter-chip.active {
+      background: var(--gold);
+      color: #1b1608;
+      border-color: var(--gold);
+    }
+    
+    .search-box {
+      margin-bottom: 24px;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-family: var(--font-sans);
+      background: var(--surface);
+      color: var(--ink);
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    
+    /* ========== FIVE PILLARS SECTION ========== */
+    .pillar-tab-content {
+      display: none;
+    }
+    
+    .pillar-tab-content.active {
+      display: block;
+    }
+    
+    .pillar-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-top: 20px;
+    }
+    
+    .pillar-panel h3 {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    
+    .pillar-panel .arabic {
+      font-family: Amiri, serif;
+      font-size: 18px;
+      color: var(--gold-dark);
+      margin-bottom: 18px;
+    }
+    
+    .pillar-section {
+      margin-bottom: 18px;
+    }
+    
+    .pillar-section strong {
+      display: block;
+      font-size: 15px;
+      color: var(--gold-dark);
+      margin-bottom: 6px;
+      font-family: var(--font-serif);
+    }
+    
+    .pillar-section p {
+      color: var(--ink);
+      line-height: 1.7;
+      margin: 0;
+    }
+    
+    /* ========== DHIKR SECTION ========== */
+    .dhikr-container {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      max-width: 500px;
+      margin: 24px auto;
+    }
+    
+    .timer-display {
+      font-size: 48px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--gold-dark);
+      margin-bottom: 22px;
+      font-family: var(--font-serif);
+    }
+    
+    .dhikr-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    
+    .dhikr-card:hover {
+      border-color: var(--gold);
+      background: rgba(201, 162, 75, 0.05);
+    }
+    
+    .dhikr-card strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    
+    .dhikr-card .arabic {
+      font-family: Amiri, serif;
+      font-size: 16px;
+      color: var(--gold-dark);
+      margin-bottom: 6px;
+    }
+    
+    .dhikr-card .count {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    
+    /* ========== GLOBE SECTION ========== */
+    .globe-container {
+      margin: 24px 0;
+    }
+    
+    .hub-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+    
+    .hub-card h3 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+    
+    .hub-card .region {
+      color: var(--gold-dark);
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: block;
+    }
+    
+    .hub-facts {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .hub-facts li {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      padding-left: 16px;
+      position: relative;
+    }
+    
+    .hub-facts li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 12px;
+    }
+    
+    /* ========== QUIZ SECTION ========== */
+    .quiz-question {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+    
+    .quiz-question h3 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    
+    .quiz-question .arabic {
+      font-family: Amiri, serif;
+      color: var(--gold-dark);
+      margin-bottom: 16px;
+      direction: rtl;
+      text-align: right;
+    }
+    
+    .quiz-options {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+    }
+    
+    .quiz-options li {
+      margin-bottom: 8px;
+    }
+    
+    .quiz-option {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+    
+    .quiz-option:hover {
+      border-color: var(--gold);
+      background: rgba(201, 162, 75, 0.05);
+    }
+    
+    .quiz-option.selected {
+      background: var(--gold);
+      color: #1b1608;
+      border-color: var(--gold);
+    }
+  </style>
+  <title>Explore Labs | Albab Islamic University</title>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand" aria-label="Albab Islamic University">
+      <svg viewBox="0 0 28 32" fill="none" aria-hidden="true">
+        <path d="M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      Albab Islamic University
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/programmes">Programmes</a>
+      <a href="/founder">Founder</a>
+      <a href="/explore">Explore</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ========== PAGE HEADER ========== -->
+<div class="page-header">
+  <div class="wrap">
+    <h1>Explore Labs</h1>
+    <p class="subtitle">Interactive modules for Islamic learning: live tools and coming soon initiatives.</p>
+  </div>
+</div>
+
+<!-- ========== LABS SECTION ========== -->
+<section style="padding: 56px 0;">
+  <div class="wrap">
+    <div class="search-box">
+      <input type="text" id="labSearch" placeholder="Search labs by name or topic..." class="search-input">
+    </div>
+    
+    <div class="category-filter" id="categoryFilter"></div>
+    
+    <div id="labsGrid"></div>
+  </div>
+</section>
+
+<!-- ========== FIVE PILLARS ========== -->
+<section id="pillars" style="background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 56px 0;">
+  <div class="wrap">
+    <h2>Five Pillars of Islam</h2>
+    <p class="section-lead">The foundational practices of Islamic faith and practice.</p>
+    
+    <div class="tabs" style="margin-bottom: 0;">
+      <button class="tab-btn active" data-pillar="shahadah" onclick="switchPillar(event)">Shahadah</button>
+      <button class="tab-btn" data-pillar="salah" onclick="switchPillar(event)">Salah</button>
+      <button class="tab-btn" data-pillar="zakat" onclick="switchPillar(event)">Zakat</button>
+      <button class="tab-btn" data-pillar="sawm" onclick="switchPillar(event)">Sawm</button>
+      <button class="tab-btn" data-pillar="hajj" onclick="switchPillar(event)">Hajj</button>
+    </div>
+    
+    <div id="pillarContent"></div>
+  </div>
+</section>
+
+<!-- ========== DHIKR CHECKLIST ========== -->
+<section id="dhikr" style="padding: 56px 0;">
+  <div class="wrap">
+    <h2 style="text-align: center;">Dhikr Checklist</h2>
+    <p class="section-lead" style="text-align: center;">Daily remembrances. Tap each to count. <em style="color: var(--muted);">"Indeed, in the remembrance of Allah do hearts find rest."</em> (Surah Ar-Ra'd 13:28)</p>
+    
+    <div class="dhikr-container" id="dhikrContainer"></div>
+  </div>
+</section>
+
+<!-- ========== CELESTIAL GLOBE ========== -->
+<section id="globe" style="background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 56px 0;">
+  <div class="wrap">
+    <h2>Celestial Globe</h2>
+    <p class="section-lead">Six scholastic hubs of Islamic learning throughout history.</p>
+    <div class="globe-container" id="globeContainer"></div>
+  </div>
+</section>
+
+<!-- ========== INTERACTIVE QUIZ ========== -->
+<section id="quiz" style="padding: 56px 0;">
+  <div class="wrap">
+    <h2>Interactive Quiz</h2>
+    <p class="section-lead">Test your knowledge on Islamic topics and teachings.</p>
+    <div id="quizContainer"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Explore Labs</h4>
+      <p style="color: #d7e0d6; font-size: 15px; margin: 0;">Interactive Islamic learning modules.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/hadith">Hadith Library</a></li>
+        <li><a href="/programmes">Programmes</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/albabuniversity" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024–2026 Albab Islamic University. All rights reserved. Designed for Ulul Albab.</p>
+  </div>
+</footer>
+
+<script src="/assets/labs-data.js"></script>
+<script src="/assets/site.js"></script>
+<script>
+// Render labs grid
+function renderLabs(filter = 'all', search = '') {
+  let filtered = LABS;
+  
+  if (filter !== 'all') {
+    filtered = filtered.filter(l => l.category === filter);
+  }
+  
+  if (search) {
+    const q = search.toLowerCase();
+    filtered = filtered.filter(l => 
+      l.title.toLowerCase().includes(q) || 
+      l.summary.toLowerCase().includes(q) ||
+      l.tags.some(t => t.toLowerCase().includes(q))
+    );
+  }
+  
+  const grid = document.getElementById('labsGrid');
+  const html = filtered.map(lab => `
+    <div class="lab-row animate-in">
+      <div class="lab-content">
+        <h3>${lab.title}</h3>
+        <div class="lab-arabic">${lab.arabic}</div>
+        <p class="lab-summary">${lab.summary}</p>
+        <div class="lab-tags">
+          ${lab.tags.map(tag => `<span class="lab-tag">${tag}</span>`).join('')}
+        </div>
+      </div>
+      <div class="lab-status ${lab.status}">
+        <span class="status-badge ${lab.status === 'live' ? 'live' : 'coming'}">
+          ${lab.status === 'live' ? '✓ Live' : '⏳ Coming soon'}
+        </span>
+        ${lab.status === 'live' ? 
+          `<a href="${lab.link}" class="btn sm primary" style="margin-top: 8px;">Open</a>` :
+          `<a href="${lab.link}" class="btn sm tertiary" style="margin-top: 8px;">Notify me</a>`
+        }
+      </div>
+    </div>
+  `).join('');
+  
+  grid.innerHTML = html || '<p style="color: var(--muted); text-align: center; padding: 40px;">No labs found.</p>';
+}
+
+// Setup filters
+function setupFilters() {
+  const container = document.getElementById('categoryFilter');
+  const html = LAB_CATEGORIES.map(cat => `
+    <button class="filter-chip ${cat.id === 'all' ? 'active' : ''}" 
+            onclick="filterLabs('${cat.id}')">
+      ${cat.label} (${cat.count})
+    </button>
+  `).join('');
+  container.innerHTML = html;
+}
+
+function filterLabs(category) {
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  event.target.classList.add('active');
+  renderLabs(category === 'all' ? 'all' : category);
+}
+
+// Setup search
+function setupSearch() {
+  const input = document.getElementById('labSearch');
+  if (input) {
+    input.addEventListener('input', (e) => {
+      renderLabs('all', e.target.value);
+    });
+  }
+}
+
+// Render five pillars
+function renderPillars() {
+  const container = document.getElementById('pillarContent');
+  
+  const pillarHTML = FIVE_PILLARS_EXPLORE.map(p => `
+    <div class="pillar-tab-content pillar-${p.name.toLowerCase()}">
+      <div class="pillar-panel">
+        <h3>${p.name}</h3>
+        <div class="arabic">${p.arabic}</div>
+        
+        <div class="pillar-section">
+          <strong>The rules and conditions</strong>
+          <p>${p.rules}</p>
+        </div>
+        
+        <div class="pillar-section">
+          <strong>The practical steps</strong>
+          <p>${p.steps}</p>
+        </div>
+        
+        <div class="pillar-section">
+          <strong>Spiritual significance</strong>
+          <p>${p.significance}</p>
+        </div>
+        
+        <div class="pillar-section">
+          <strong>Quranic proof</strong>
+          <p><em>${p.proof}</em></p>
+        </div>
+      </div>
+    </div>
+  `).join('');
+  
+  container.innerHTML = pillarHTML;
+  switchPillar({ target: { getAttribute: () => 'shahadah' } });
+}
+
+function switchPillar(e) {
+  const pillar = e.target.getAttribute('data-pillar') || 'shahadah';
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.pillar-tab-content').forEach(c => c.classList.remove('active'));
+  e.target.classList.add('active');
+  document.querySelector(`.pillar-${pillar}`).classList.add('active');
+}
+
+// Render dhikr cards
+function renderDhikr() {
+  const container = document.getElementById('dhikrContainer');
+  const html = DHIKR_SESSION.map(d => `
+    <div class="dhikr-card" onclick="incrementDhikr('${d.id}', this)">
+      <strong>${d.text}</strong>
+      <div class="arabic">${d.arabic}</div>
+      <div style="color: var(--muted); font-size: 13px; margin-bottom: 6px;">${d.meaning}</div>
+      <div class="count" data-count="0">Count: <span>0</span>${d.count ? ` / ${d.count}` : ''}</div>
+    </div>
+  `).join('');
+  container.innerHTML = html;
+}
+
+function incrementDhikr(id, card) {
+  const countEl = card.querySelector('[data-count]');
+  let count = parseInt(countEl.getAttribute('data-count')) || 0;
+  count++;
+  countEl.setAttribute('data-count', count);
+  countEl.querySelector('span').textContent = count;
+  
+  try {
+    localStorage.setItem(`dhikr_${id}`, count);
+  } catch (e) {}
+}
+
+// Render scholastic hubs
+function renderGlobe() {
+  const container = document.getElementById('globeContainer');
+  const html = SCHOLASTIC_HUBS.map(hub => `
+    <div class="hub-card animate-in">
+      <h3>${hub.name}</h3>
+      <div style="font-family: Amiri, serif; font-size: 18px; color: var(--gold-dark); margin-bottom: 8px;">${hub.arabic}</div>
+      <span class="region">${hub.region}</span>
+      <ul class="hub-facts">
+        ${hub.facts.map(fact => `<li>${fact}</li>`).join('')}
+      </ul>
+    </div>
+  `).join('');
+  container.innerHTML = html;
+}
+
+// Render quiz
+function renderQuiz() {
+  const container = document.getElementById('quizContainer');
+  const html = QUIZ_QUESTIONS.map((q, idx) => `
+    <div class="quiz-question">
+      <h3>Question ${idx + 1}</h3>
+      <div class="arabic">${q.arabic}</div>
+      <p style="color: var(--ink); margin-bottom: 16px;">${q.question}</p>
+      <ul class="quiz-options">
+        ${q.options.map((opt, i) => `
+          <li>
+            <button class="quiz-option" onclick="selectOption(this, ${i}, ${q.correct}, '${q.explanation}')">
+              ${String.fromCharCode(65 + i)}. ${opt}
+            </button>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+  `).join('');
+  container.innerHTML = html;
+}
+
+function selectOption(btn, idx, correct, explanation) {
+  const parent = btn.closest('.quiz-question');
+  parent.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  
+  if (!parent.querySelector('.quiz-explanation')) {
+    const exp = document.createElement('p');
+    exp.className = 'quiz-explanation';
+    exp.style.cssText = 'background: var(--bg); padding: 12px; border-radius: var(--radius); margin-top: 12px; color: var(--muted); font-size: 14px;';
+    exp.innerHTML = `<strong>${idx === correct ? '✓ Correct!' : '✗ Not quite.'}</strong> ${explanation}`;
+    parent.appendChild(exp);
+  }
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  setupFilters();
+  setupSearch();
+  renderLabs();
+  renderPillars();
+  renderDhikr();
+  renderGlobe();
+  renderQuiz();
+});
+</script>
+
+</body>
+</html>

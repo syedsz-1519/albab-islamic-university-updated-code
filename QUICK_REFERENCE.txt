@@ -1,0 +1,168 @@
+ALBAB ISLAMIC UNIVERSITY — QUICK REFERENCE
+===========================================
+
+📁 PROJECT FILES:
+─────────────────
+✓ Albab Islamic University.html — Main website file
+✓ images/                        — Folder for images (create these 3)
+✓ README.md                      — Full project overview
+✓ UPDATE_GUIDE.md                — How to edit content
+✓ DELIVERABLES.txt               — Complete checklist
+
+🎯 3 STEPS TO LAUNCH:
+───────────────────
+
+1. ADD IMAGES (Optional but recommended):
+   ├─ images/founder-photo.jpg  (founder headshot)
+   ├─ images/logo.svg            (university logo)
+   └─ images/event-*.jpg         (event posters)
+
+2. EDIT CONTENT (Required):
+   Open Albab Islamic University.html in a text editor
+   Find these arrays at the top (after <style> tag):
+   ├─ window.PROGRAMMES       (events/dates)
+   ├─ window.BRANCHES         (11 fields × 5 branches)
+   ├─ window.PILLARS          (Shahadah, Salah, Zakat, Sawm, Hajj)
+   ├─ window.FOUNDER          (name, bio, photo)
+   └─ window.LOGO_URL         (logo path)
+
+3. DEPLOY:
+   Upload entire folder to:
+   ├─ Vercel (recommended)
+   ├─ Netlify
+   ├─ AWS S3
+   └─ Any static web host
+
+🎨 DESIGN SPECS:
+────────────────
+Colors:       Deep green #0f3d2e + Gold #c9a24b
+Fonts:        Amiri (headings) + Source Sans 3 (body)
+Layout:       Responsive mobile-first, dark mode included
+Speed:        No frameworks, ~35 KB HTML only
+Accessibility: Keyboard nav, WCAG colors, semantic HTML
+
+📱 SECTIONS:
+────────────
+1. Hero          — Deep green band with headline + CTAs
+2. Hadith        — Arabic quote + English translation
+3. Branches      — 11 study fields × 5 sub-disciplines
+4. Pillars       — 5 Pillars with accessible tabs
+5. What We Study — 4 core focus areas
+6. Deen Mapping  — Teaching method explanation
+7. Events        — Auto-sorted by date
+8. Founder       — Quote + photo + bio + Instagram
+9. Contact       — Phone + Instagram links
+10. Footer       — Copyright
+
+⚙️ EDITABLE ARRAYS (Top of HTML):
+──────────────────────────────────
+
+PROGRAMMES (Events):
+────────────────────
+window.PROGRAMMES = [
+  {
+    title: "Event Name",
+    date: "2026-11-05",           ← Use YYYY-MM-DD format
+    dateDisplay: "05 Nov 2026",
+    time: "10:00 AM to 02:00 PM",
+    venue: "Location, City",
+    desc: "Event description",
+    type: "talk",                 ← 'talk', 'course', 'workshop', 'ongoing'
+    poster: null                  ← Use "images/poster.jpg" or null
+  }
+]
+
+BRANCHES (Study Fields):
+────────────────────────
+window.BRANCHES = [
+  {
+    name: "Hadith",
+    desc: "One-line description",
+    branches: [
+      "Branch 1",
+      "Branch 2",
+      "Branch 3",
+      "Branch 4",
+      "Branch 5"
+    ]
+  }
+]
+// 11 fields total
+
+PILLARS (Five Pillars):
+───────────────────────
+window.PILLARS = [
+  {
+    name: "Salah",
+    arabic: "الصلاة",
+    rules: "Obligatory prayer 5x daily",
+    steps: "Fajr, Dhuhr, Asr, Maghrib, Isha",
+    significance: "Direct connection to Allah",
+    quote: "Prayer is the pillar of faith"  ← Optional
+  }
+]
+// 5 items (Shahadah, Salah, Zakat, Sawm, Hajj)
+
+FOUNDER (About):
+────────────────
+window.FOUNDER = {
+  name: "Adnan Al Farooq",
+  bio: "Founder and Director...",
+  quote: "Faith asks for thinking...",
+  instagramHandle: "adnanalfarooq",      ← No @ symbol
+  photo: "images/founder-photo.jpg"      ← Or null
+}
+
+LOGO:
+─────
+window.LOGO_URL = "images/logo.svg"      ← Or null
+
+🖼️ IMAGE PATHS:
+────────────────
+Founder photo:
+  ├─ Size: ~400×500px (portrait)
+  ├─ Format: JPG, PNG, or WebP
+  ├─ Path: images/founder-photo.jpg
+  └─ Max width on site: 280px
+
+Logo:
+  ├─ Format: SVG (best) or PNG
+  ├─ Size: 28×32px (will scale)
+  └─ Path: images/logo.svg
+
+Event posters:
+  ├─ Format: JPG or PNG
+  ├─ Size: Any (will scale)
+  └─ Path: images/event-name.jpg
+
+💻 DEPLOY COMMAND (Vercel):
+─────────────────────────
+$ vercel deploy
+
+Or use web UI: vercel.com → New Project → Upload folder
+
+✅ BEFORE YOU LAUNCH:
+─────────────────────
+□ Edit window.PROGRAMMES (update dates, titles, descriptions)
+□ Edit window.BRANCHES (11 fields)
+□ Edit window.PILLARS (check all 5 pillars match your content)
+□ Edit window.FOUNDER (name, bio, Instagram handle)
+□ Add images/founder-photo.jpg
+□ Add images/logo.svg (optional)
+□ Test on mobile (use Chrome DevTools)
+□ Test dark mode (System Settings → Appearance)
+□ Test keyboard navigation (Tab key)
+□ Deploy to Vercel
+
+🚀 YOU'RE READY!
+────────────────
+
+The HTML file is complete, tested, and production-ready.
+No build step. No backend. No database. Pure static.
+
+All content is in JavaScript arrays at the top of the file.
+Edit, save, deploy. Done.
+
+Questions? See UPDATE_GUIDE.md for detailed examples.
+
+© 2024–2026 Albab Islamic University. All rights reserved.

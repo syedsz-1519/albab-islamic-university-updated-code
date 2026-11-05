@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f3d2e">
+  <meta name="description" content="Hadith Library: Explore authenticated hadith collections including 40 Hadith of an-Nawawi, major books of hadith, and scholarly resources.">
+  <meta property="og:title" content="Hadith Library | Albab Islamic University">
+  <link rel="canonical" href="https://al-bab-university.vercel.app/hadith">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 32'%3E%3Cpath d='M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z' stroke='%23c9a24b' stroke-width='2' fill='none'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    .hadith-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 16px;
+      transition: all 0.2s;
+    }
+    
+    .hadith-item:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 12px rgba(201, 162, 75, 0.1);
+    }
+    
+    .hadith-item h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    
+    .hadith-arabic {
+      font-family: Amiri, serif;
+      font-size: 18px;
+      direction: rtl;
+      text-align: right;
+      line-height: 1.8;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .hadith-translation {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    
+    .hadith-meta {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+      margin-bottom: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+    
+    .meta-item {
+      font-size: 13px;
+    }
+    
+    .meta-label {
+      color: var(--muted);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+    
+    .meta-value {
+      color: var(--ink);
+    }
+    
+    .hadith-commentary {
+      background: var(--bg);
+      padding: 12px;
+      border-left: 3px solid var(--gold);
+      border-radius: var(--radius);
+      font-size: 15px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    
+    .verification-tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .verification-tag.verified {
+      background: rgba(201, 162, 75, 0.1);
+      color: var(--gold-dark);
+      border: 1px solid var(--gold);
+    }
+    
+    .verification-tag.pending {
+      background: rgba(77, 95, 86, 0.1);
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }
+    
+    .topic-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    
+    .topic-chip {
+      padding: 8px 12px;
+      background: var(--line);
+      color: var(--muted);
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    
+    .topic-chip:hover,
+    .topic-chip.active {
+      background: var(--gold);
+      color: #1b1608;
+    }
+    
+    .search-box {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-size: 15px;
+      font-family: var(--font-sans);
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+    }
+    
+    .nawawi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    
+    .nawawi-btn {
+      padding: 10px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    
+    .nawawi-btn:hover,
+    .nawawi-btn.active {
+      background: var(--gold);
+      color: #1b1608;
+      border-color: var(--gold);
+    }
+    
+    .imam-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      margin-bottom: 20px;
+    }
+    
+    .imam-card h3 {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+    
+    .imam-card .era {
+      color: var(--gold-dark);
+      font-weight: 600;
+      margin-bottom: 12px;
+      display: block;
+    }
+  </style>
+  <title>Hadith Library | Albab Islamic University</title>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand" aria-label="Albab Islamic University">
+      <svg viewBox="0 0 28 32" fill="none" aria-hidden="true">
+        <path d="M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      Albab Islamic University
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/programmes">Programmes</a>
+      <a href="/founder">Founder</a>
+      <a href="/explore">Explore</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ========== PAGE HEADER ========== -->
+<div class="page-header">
+  <div class="wrap">
+    <div style="font-size: 28px; direction: rtl; text-align: right; margin-bottom: 12px; font-family: Amiri, serif;">
+      كُتُبُ الْحَدِيثِ الشَّرِيفِ
+    </div>
+    <h1>Hadith Library</h1>
+    <p class="subtitle">The authentic collections: 40 Hadith of an-Nawawi, the eight major books, and scholarly resources.</p>
+  </div>
+</div>
+
+<!-- ========== TABS ========== -->
+<section style="padding: 40px 0; background: var(--surface); border-bottom: 1px solid var(--line);">
+  <div class="wrap">
+    <div class="tabs" style="border-bottom: 2px solid var(--line); margin-bottom: 0;">
+      <button class="tab-btn active" data-tab="nawawi" onclick="switchHadithTab(event)">40 Hadith of an-Nawawi</button>
+      <button class="tab-btn" data-tab="collections" onclick="switchHadithTab(event)">Browse by book</button>
+      <button class="tab-btn" data-tab="search" onclick="switchHadithTab(event)">Search by topic</button>
+      <button class="tab-btn" data-tab="imams" onclick="switchHadithTab(event)">Four Imams</button>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TAB: 40 HADITH ========== -->
+<section id="tab-nawawi" class="tab-content active">
+  <div class="wrap">
+    <p class="section-lead" style="margin-top: 24px;">Select a hadith to read its full text, commentary, and authentication.</p>
+    <div class="nawawi-grid" id="nawawiGrid"></div>
+    <div id="nawawiContent"></div>
+  </div>
+</section>
+
+<!-- ========== TAB: BROWSE BY BOOK ========== -->
+<section id="tab-collections" class="tab-content" style="padding: 40px 0;">
+  <div class="wrap">
+    <p class="section-lead">The eight major collections of hadith.</p>
+    <div id="collectionsGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px;"></div>
+  </div>
+</section>
+
+<!-- ========== TAB: SEARCH ========== -->
+<section id="tab-search" class="tab-content" style="padding: 40px 0;">
+  <div class="wrap">
+    <p class="section-lead">Search hadith by topic, Arabic text, or book name.</p>
+    <div class="search-box">
+      <input type="text" id="hadithSearchInput" placeholder="Search by Arabic, English, topic, or book..." class="search-input" />
+    </div>
+    <div class="topic-chips" id="topicChips"></div>
+    <div id="searchResults"></div>
+  </div>
+</section>
+
+<!-- ========== TAB: FOUR IMAMS ========== -->
+<section id="tab-imams" class="tab-content" style="padding: 40px 0;">
+  <div class="wrap">
+    <p class="section-lead">The four founders of Islamic jurisprudential schools (madhabs).</p>
+    <div id="imamsContainer"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Hadith Library</h4>
+      <p style="color: #d7e0d6; font-size: 15px; margin: 0;">Authenticated collections of prophetic traditions.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/programmes">Programmes</a></li>
+        <li><a href="/explore">Explore Labs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/albabuniversity" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024–2026 Albab Islamic University. All rights reserved. Designed for Ulul Albab.</p>
+  </div>
+</footer>
+
+<script src="/assets/hadith-data.js"></script>
+<script src="/assets/site.js"></script>
+<script>
+// Tab switching
+function switchHadithTab(e) {
+  const btn = e.target;
+  const tabId = btn.getAttribute('data-tab');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(`tab-${tabId}`).classList.add('active');
+}
+
+// Render 40 Hadith Nawawi buttons
+function renderNawawiButtons() {
+  const grid = document.getElementById('nawawiGrid');
+  const buttons = HADITH_NAWAWI.map((h, i) => `
+    <button class="nawawi-btn" onclick="displayNawawiHadith(${i})">${h.number}</button>
+  `).join('');
+  grid.innerHTML = buttons;
+}
+
+// Display single Nawawi hadith
+function displayNawawiHadith(index) {
+  const h = HADITH_NAWAWI[index];
+  if (!h) return;
+  
+  const verifiedClass = h.verified ? 'verified' : 'pending';
+  const verifiedText = h.verified ? '✓ Verified' : '⏳ Pending verification';
+  
+  const html = `
+    <div class="hadith-item animate-in" style="margin-top: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+        <h3>Hadith #${h.number}</h3>
+        <span class="verification-tag ${verifiedClass}">${verifiedText}</span>
+      </div>
+      <div class="hadith-arabic">${h.arabic}</div>
+      <div class="hadith-translation">"${h.translation}"</div>
+      <div class="hadith-meta">
+        <div class="meta-item">
+          <span class="meta-label">Narrator</span>
+          <span class="meta-value">${h.narrator}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Source</span>
+          <span class="meta-value">${h.source}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Grading</span>
+          <span class="meta-value">${h.grading}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Topic</span>
+          <span class="meta-value">${h.topic}</span>
+        </div>
+      </div>
+      ${h.commentary ? `<div class="hadith-commentary"><strong>Commentary:</strong> ${h.commentary}</div>` : ''}
+    </div>
+  `;
+  
+  document.getElementById('nawawiContent').innerHTML = html;
+}
+
+// Render collections
+function renderCollections() {
+  const grid = document.getElementById('collectionsGrid');
+  const html = HADITH_COLLECTIONS.map(c => `
+    <div class="card">
+      <h3>${c.name}</h3>
+      <p style="color: var(--gold-dark); font-family: Amiri, serif; font-size: 16px; margin-bottom: 8px;">${c.arabic}</p>
+      <p style="color: var(--muted); font-size: 14px; margin-bottom: 12px;"><strong>Compiler:</strong> ${c.compiler}</p>
+      <p style="color: var(--muted); font-size: 14px;"><strong>Era:</strong> ${c.era}</p>
+      <p style="color: var(--gold-dark); font-weight: 600; margin-top: 12px;">${c.entries.length} entries available</p>
+    </div>
+  `).join('');
+  grid.innerHTML = html;
+}
+
+// Render topic chips
+function renderTopicChips() {
+  const container = document.getElementById('topicChips');
+  const html = HADITH_TOPICS.map(t => `
+    <button class="topic-chip" onclick="filterByTopic('${t.id}')">${t.icon} ${t.label}</button>
+  `).join('');
+  container.innerHTML = html;
+}
+
+// Filter by topic
+function filterByTopic(topic) {
+  document.querySelectorAll('.topic-chip').forEach(c => c.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  const filtered = topic === 'all' ? HADITH_NAWAWI : HADITH_NAWAWI.filter(h => h.topic === topic);
+  displaySearchResults(filtered);
+}
+
+// Search functionality
+function setupSearch() {
+  const input = document.getElementById('hadithSearchInput');
+  if (input) {
+    input.addEventListener('input', (e) => {
+      const query = e.target.value;
+      if (!query) {
+        document.getElementById('searchResults').innerHTML = '';
+        return;
+      }
+      const results = searchHadith(query);
+      displaySearchResults(results);
+    });
+  }
+}
+
+// Display search results
+function displaySearchResults(results) {
+  const container = document.getElementById('searchResults');
+  
+  if (results.length === 0) {
+    container.innerHTML = '<div class="empty-state"><p>No hadith found matching your search.</p></div>';
+    return;
+  }
+  
+  const html = results.map(h => {
+    const verifiedClass = h.verified ? 'verified' : 'pending';
+    const verifiedText = h.verified ? '✓ Verified' : '⏳ Pending verification';
+    return `
+      <div class="hadith-item animate-in">
+        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+          <h3>${h.number ? `Hadith #${h.number}` : h.title || 'Hadith'}</h3>
+          <span class="verification-tag ${verifiedClass}">${verifiedText}</span>
+        </div>
+        <div class="hadith-arabic">${h.arabic}</div>
+        <div class="hadith-translation">"${h.translation}"</div>
+        <div class="hadith-meta">
+          <div class="meta-item">
+            <span class="meta-label">Topic</span>
+            <span class="meta-value">${h.topic || '—'}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Source</span>
+            <span class="meta-value">${h.source}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Grading</span>
+            <span class="meta-value">${h.grading}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  container.innerHTML = html;
+}
+
+// Render Four Imams
+function renderImams() {
+  const container = document.getElementById('imamsContainer');
+  const html = FOUR_IMAMS.map(imam => `
+    <div class="imam-card animate-in">
+      <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px;">
+        <h3>${imam.name}</h3>
+        <p style="font-family: Amiri, serif; font-size: 18px; color: var(--gold-dark);">${imam.arabic}</p>
+      </div>
+      <span class="era">${imam.birth} – ${imam.death} AH</span>
+      <p style="color: var(--muted); margin-bottom: 12px;"><strong>Full name:</strong> ${imam.fullName}</p>
+      <p style="color: var(--muted); margin-bottom: 12px;"><strong>School:</strong> ${imam.school}</p>
+      <p style="color: var(--ink); line-height: 1.6; margin-bottom: 12px;">${imam.biography}</p>
+      <div style="background: var(--bg); padding: 12px; border-radius: var(--radius); margin-bottom: 12px;">
+        <p style="color: var(--muted); margin: 0;"><strong>Contribution to Islamic scholarship:</strong> ${imam.contribution}</p>
+      </div>
+      <p style="color: var(--muted); font-size: 15px;"><strong>On hadith memorization:</strong> ${imam.hadith_memorization}</p>
+    </div>
+  `).join('');
+  container.innerHTML = html;
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  renderNawawiButtons();
+  renderCollections();
+  renderTopicChips();
+  renderImams();
+  setupSearch();
+});
+</script>
+
+</body>
+</html>

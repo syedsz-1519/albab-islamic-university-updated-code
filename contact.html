@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f3d2e">
+  <meta name="description" content="Contact Albab Islamic University. Get in touch with questions about programmes, collaboration, or speaking engagements.">
+  <meta property="og:title" content="Contact | Albab Islamic University">
+  <link rel="canonical" href="https://al-bab-university.vercel.app/contact">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 32'%3E%3Cpath d='M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z' stroke='%23c9a24b' stroke-width='2' fill='none'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/style.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 56px;
+    }
+    
+    .contact-form {
+      display: grid;
+      gap: 16px;
+    }
+    
+    .form-group {
+      display: grid;
+      gap: 6px;
+    }
+    
+    .form-group label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      background: var(--surface);
+      color: var(--ink);
+      transition: border-color 0.2s;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.1);
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .form-info {
+      background: var(--bg);
+      padding: 22px;
+      border-radius: var(--radius);
+      border-left: 3px solid var(--gold);
+    }
+    
+    .contact-info {
+      display: grid;
+      gap: 22px;
+    }
+    
+    .contact-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: all 0.2s;
+    }
+    
+    .contact-item:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 12px rgba(201, 162, 75, 0.1);
+    }
+    
+    .contact-item h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    
+    .contact-item p {
+      color: var(--muted);
+      margin: 0 0 12px 0;
+    }
+    
+    .contact-item a {
+      color: var(--gold-dark);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .contact-item a:hover {
+      color: var(--gold);
+    }
+    
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    
+    .faq-question {
+      padding: 18px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    
+    .faq-question:hover {
+      background: var(--bg);
+    }
+    
+    .faq-icon {
+      font-size: 18px;
+      transition: transform 0.3s;
+    }
+    
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      display: none;
+      padding: 0 18px 18px 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      border-top: 1px solid var(--line);
+    }
+    
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+  </style>
+  <title>Contact | Albab Islamic University</title>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="/" class="brand" aria-label="Albab Islamic University">
+      <svg viewBox="0 0 28 32" fill="none" aria-hidden="true">
+        <path d="M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      Albab Islamic University
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/programmes">Programmes</a>
+      <a href="/founder">Founder</a>
+      <a href="/explore">Explore</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ========== PAGE HEADER ========== -->
+<div class="page-header">
+  <div class="wrap">
+    <h1>Get in touch</h1>
+    <p class="subtitle">Questions about programmes, collaboration, or speaking engagements? We'd like to hear from you.</p>
+  </div>
+</div>
+
+<!-- ========== CONTACT FORM & INFO ========== -->
+<section style="padding: 56px 0;">
+  <div class="wrap">
+    <div class="contact-grid">
+      <!-- CONTACT FORM -->
+      <div>
+        <h2 style="margin-bottom: 22px;">Send us a message</h2>
+        <form id="contactForm" class="contact-form" onsubmit="handleContactForm(event)">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a topic...</option>
+              <option value="Programme Enquiry">Programme enquiry</option>
+              <option value="Speaking Engagement">Speaking engagement</option>
+              <option value="Collaboration">Collaboration</option>
+              <option value="General Question">General question</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          
+          <div class="form-info">
+            <p style="margin: 0; font-size: 13px; color: var(--muted);">
+              <strong>Note:</strong> This form uses email and WhatsApp to send your message. No data is stored on our servers.
+            </p>
+          </div>
+          
+          <button type="submit" class="btn primary" style="width: 100%; text-align: center;">Send message</button>
+        </form>
+      </div>
+      
+      <!-- CONTACT INFO -->
+      <div>
+        <h2 style="margin-bottom: 22px;">Contact information</h2>
+        
+        <div class="contact-item">
+          <h3>Founder & Director</h3>
+          <p>Adnan Al Farooq</p>
+          <a href="https://www.instagram.com/adnanalfarooq" target="_blank" rel="noopener">@adnanalfarooq on Instagram</a>
+        </div>
+        
+        <div class="contact-item">
+          <h3>Phone</h3>
+          <p>For urgent enquiries</p>
+          <a href="tel:+917051913270">+91 7051913270</a>
+        </div>
+        
+        <div class="contact-item">
+          <h3>Instagram</h3>
+          <p>University official account</p>
+          <a href="https://www.instagram.com/albabuniversity" target="_blank" rel="noopener">@albabuniversity</a>
+        </div>
+        
+        <!-- TODO: Add email address when ready -->
+        <!-- <div class="contact-item">
+          <h3>Email</h3>
+          <p>For detailed enquiries</p>
+          <a href="mailto:hello@albab.edu">hello@albab.edu</a>
+        </div> -->
+        
+        <!-- TODO: Add YouTube channel when available -->
+        <!-- <div class="contact-item">
+          <h3>YouTube</h3>
+          <p>Video content and talks</p>
+          <a href="https://www.youtube.com/@albabuniversity" target="_blank" rel="noopener">@albabuniversity</a>
+        </div> -->
+        
+        <div class="contact-item" style="background: var(--bg); border-color: var(--line);">
+          <h3>Location</h3>
+          <p style="color: var(--muted); font-size: 14px;">
+            <!-- TODO: Add university location/office information -->
+            Location details are being prepared. For now, reach out via Instagram or phone.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section style="padding: 56px 0; background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="wrap">
+    <h2 style="margin-bottom: 28px;">Frequently asked questions</h2>
+    
+    <div id="faqContainer"></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div>
+      <h4>Contact</h4>
+      <p style="color: #d7e0d6; font-size: 15px; margin: 0;">We respond to all enquiries within 2–3 business days.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/programmes">Programmes</a></li>
+        <li><a href="/founder">Founder</a></li>
+        <li><a href="/explore">Explore Labs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://www.instagram.com/albabuniversity" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="tel:+917051913270">+91 7051913270</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024–2026 Albab Islamic University. All rights reserved. Designed for Ulul Albab.</p>
+  </div>
+</footer>
+
+<script src="/assets/site.js"></script>
+<script>
+// FAQ Data
+const FAQ = [
+  {
+    question: "Is Albab Islamic University accredited?",
+    answer: "Albab Islamic University is a learning platform for serious students and the public seeking in-depth Islamic scholarship. We do not offer formal degrees or accreditation. Our credibility rests on the authenticity, rigour, and honesty of our content and teaching."
+  },
+  {
+    question: "Do I need prior Islamic knowledge to join the programmes?",
+    answer: "No. Our programmes are designed for learners at different levels. Some programmes are introductory, others are advanced. When you enquire, we'll help you find the right starting point based on your background and interests."
+  },
+  {
+    question: "What languages are the programmes taught in?",
+    answer: "Programmes are primarily in English, with Arabic texts and references as appropriate. Some specialised programmes may include content in other languages. Contact us for details about specific programmes."
+  },
+  {
+    question: "Can I audit a course or join part-time?",
+    answer: "Yes. Many programmes offer flexible participation options. When you enquire about a specific programme, we'll discuss what suits your schedule and learning goals."
+  },
+  {
+    question: "Are there fees for the programmes?",
+    answer: "Details about fees and pricing structures vary by programme. Some content is free and publicly available. For paid programmes, we offer transparent pricing and payment plans. Contact us for current information."
+  },
+  {
+    question: "How do I invite Adnan Al Farooq for a talk or event?",
+    answer: "You can request a speaking engagement through the contact form above or reach out via Instagram (@adnanalfarooq). Include details about your event, audience, and topic of interest. We'll get back to you shortly to discuss possibilities."
+  },
+  {
+    question: "What if I have feedback or notice inaccuracies?",
+    answer: "We value feedback and are committed to accuracy. If you notice any errors, particularly in Islamic content, please let us know via the contact form. We verify and correct information promptly."
+  },
+  {
+    question: "Is there a student community or forum?",
+    answer: "Currently, community interaction happens primarily through Instagram (@albabuniversity) and direct programmes. We're exploring additional platforms for peer learning and discussion. Follow us for updates."
+  }
+];
+
+// Render FAQ
+function renderFAQ() {
+  const container = document.getElementById('faqContainer');
+  const html = FAQ.map((item, i) => `
+    <div class="faq-item" onclick="toggleFAQ(this)">
+      <div class="faq-question">
+        <span>${item.question}</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">${item.answer}</div>
+    </div>
+  `).join('');
+  container.innerHTML = html;
+}
+
+// Toggle FAQ
+function toggleFAQ(el) {
+  el.classList.toggle('open');
+}
+
+// Handle contact form
+function handleContactForm(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value;
+  
+  // Construct WhatsApp message
+  const whatsappText = encodeURIComponent(
+    `Hello, I would like to get in touch about: ${subject}\n\n` +
+    `Name: ${name}\n` +
+    `Email: ${email}\n` +
+    `Phone: ${phone || 'Not provided'}\n\n` +
+    `Message:\n${message}`
+  );
+  
+  // Open WhatsApp
+  window.location.href = `https://wa.me/917051913270?text=${whatsappText}`;
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  renderFAQ();
+  
+  // Pre-fill subject from URL params
+  const params = new URLSearchParams(location.search);
+  const subject = params.get('subject');
+  if (subject) {
+    document.getElementById('subject').value = subject;
+  }
+});
+</script>
+
+</body>
+</html>

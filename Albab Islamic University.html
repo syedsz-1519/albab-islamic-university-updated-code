@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f3d2e">
+<meta name="description" content="Albab Islamic University. Studying Quran, Hadith, Fiqh with philosophy, psychology, logic and research for modern challenges.">
+<meta property="og:title" content="Albab Islamic University">
+<meta property="og:description" content="Knowledge for people who think. Philosophy, Quran, Research, Deen through mapping.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://al-bab-university.vercel.app">
+<meta property="og:image" content="https://al-bab-university.vercel.app/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<title>Albab Islamic University | Knowledge for people who think</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 32'%3E%3Cpath d='M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z' stroke='%23c9a24b' stroke-width='2' fill='none'/%3E%3C/svg%3E" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#0f3d2e; --green2:#165240; --gold:#c9a24b; --gold-d:#8a6a1f;
+  --bg:#f2f5f1; --surface:#ffffff; --ink:#14221c; --muted:#4d5f56; --line:#d6ded8;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0b1f18;--surface:#113026;--ink:#eef2ec;--muted:#a9b9b0;--line:#244a3c;--gold-d:#d9b968}
+}
+:root[data-theme="dark"]{--bg:#0b1f18;--surface:#113026;--ink:#eef2ec;--muted:#a9b9b0;--line:#244a3c;--gold-d:#d9b968}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "Source Sans 3",system-ui,sans-serif}
+h1,h2,h3{font-family:Amiri,Georgia,serif;font-weight:700;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:0;z-index:20;background:var(--green);color:#f4efe0;padding-top:env(safe-area-inset-top,0px)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brand{display:flex;align-items:center;gap:10px;font-family:Amiri,serif;font-size:21px;font-weight:700;text-decoration:none}
+nav{display:flex;gap:22px;font-size:15px}
+nav a{text-decoration:none;opacity:.88}
+nav a:hover{opacity:1;color:var(--gold)}
+.hero{background:var(--green);color:#f4efe0;padding:84px 0 96px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-60px;width:520px;height:520px;border:1px solid rgba(201,162,75,.35);border-radius:50% 50% 0 0;box-shadow:0 0 0 28px rgba(201,162,75,.08),0 0 0 56px rgba(201,162,75,.05)}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-size:clamp(44px,8vw,92px);max-width:11ch}
+.hero p.lead{max-width:520px;font-size:20px;color:#d7e0d6;margin:22px 0 32px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:4px;font-weight:600;text-decoration:none;font-size:16px}
+.btn.gold{background:var(--gold);color:#1b1608}
+.btn.gold:hover{background:#dbb55c}
+.btn.line{border:1px solid rgba(244,239,224,.5);color:#f4efe0}
+.btn.line:hover{border-color:var(--gold);color:var(--gold)}
+.est{margin-top:46px;font-size:15px;color:var(--gold)}
+section{padding:78px 0}
+h2{font-size:clamp(32px,5vw,46px);margin-bottom:14px}
+.sub{color:var(--muted);max-width:560px;margin:0 0 40px}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));border-top:2px solid var(--gold)}
+.pillar{padding:26px 22px 26px 0;border-bottom:1px solid var(--line)}
+.pillar h3{font-size:26px;margin-bottom:8px}
+.pillar p{margin:0;color:var(--muted);font-size:16px}
+.pillar b{display:block;margin-top:12px;font-weight:600;color:var(--gold-d);font-size:15px}
+.mapping{background:var(--green);color:#f4efe0}
+.mapping .sub{color:#c9d6cb}
+.mapping .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:34px}
+.mapping h3{font-size:24px;color:var(--gold);margin-bottom:6px}
+.mapping p{margin:0;color:#d7e0d6;font-size:16px}
+.events{display:grid;gap:0}
+.event{display:grid;grid-template-columns:150px 1fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line)}
+.event .date{font-family:Amiri,serif;font-size:24px;font-weight:700;color:var(--gold-d);line-height:1.2}
+.event h3{font-size:28px;margin-bottom:6px}
+.event p{margin:0;color:var(--muted);font-size:16px}
+.founder{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.quote{font-family:Amiri,serif;font-size:clamp(24px,3.4vw,34px);line-height:1.35;border-left:3px solid var(--gold);padding-left:22px}
+.founder p{color:var(--muted)}
+.contact{background:var(--surface);border-top:1px solid var(--line)}
+.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+.links a{border:1px solid var(--line);padding:12px 20px;border-radius:4px;text-decoration:none;font-weight:600}
+.links a:hover{border-color:var(--gold);color:var(--gold-d)}
+footer{background:var(--green);color:#b9c8bc;padding:30px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.float-ig{display:none;position:fixed;bottom:22px;right:22px;z-index:10;background:var(--gold);color:#1b1608;padding:12px 18px;border-radius:4px;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+@media(max-width:760px){
+  nav{display:none}
+  .founder{grid-template-columns:1fr;gap:28px}
+  .event{grid-template-columns:1fr;gap:6px}
+  .hero{padding:56px 0 70px}
+  section{padding:56px 0}
+  .float-ig{display:inline-block}
+}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+.founder-photo{width:100%;max-width:280px;height:auto;border-radius:4px;margin-bottom:12px}
+.event-poster{max-width:100%;height:auto;border-radius:4px;margin-bottom:12px}
+.hadith-banner{background:var(--surface);padding:56px 22px;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hadith-arabic{font-family:Amiri,serif;font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--gold-d);margin-bottom:16px;letter-spacing:.05em}
+.hadith-translation{font-size:18px;color:var(--ink);margin-bottom:10px;font-weight:500}
+.hadith-reference{font-size:14px;color:var(--muted)}
+.branches-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border-top:2px solid var(--gold)}
+.branch-col{padding:26px 22px 26px 0;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.branch-col:nth-child(3n){border-right:none}
+.branch-col h3{font-size:24px;color:var(--ink);margin-bottom:6px}
+.branch-col p{margin:0 0 12px 0;color:var(--muted);font-size:15px;line-height:1.5}
+.branch-col ul{list-style:none;padding:0;margin:0}
+.branch-col li{font-size:15px;color:var(--ink);padding:6px 0;border-bottom:1px solid var(--line)}
+.branch-col li:last-child{border-bottom:none}
+.pillars-band{background:var(--green);color:#f4efe0;padding:78px 0}
+.tabs{display:flex;gap:0;flex-wrap:wrap;border-bottom:2px solid rgba(201,162,75,.3);margin-bottom:34px}
+.tab-btn{background:none;border:none;padding:14px 20px;cursor:pointer;font-family:Amiri,serif;font-size:18px;font-weight:700;color:rgba(244,239,224,.6);border-bottom:3px solid transparent;transition:all .2s}
+.tab-btn:hover{color:var(--gold)}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.pillar-name{font-family:Amiri,serif;font-size:32px;color:var(--gold);margin-bottom:12px}
+.pillar-section{margin-bottom:22px}
+.pillar-section strong{display:block;font-family:Amiri,serif;font-size:18px;color:var(--gold);margin-bottom:6px}
+.pillar-section p{margin:0;color:#d7e0d6;line-height:1.65;font-size:16px}
+.pillar-quote{font-style:italic;border-left:3px solid var(--gold);padding-left:14px;margin-top:22px;color:#c9d6cb}
+.contact-section{background:var(--surface);border-top:1px solid var(--line);padding:78px 0}
+.contact-section h2{margin-bottom:14px}
+.contact-list{display:grid;gap:12px;max-width:560px}
+.contact-list a,.contact-list p{font-size:16px;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px}
+.contact-list a{color:var(--gold-d);font-weight:600}
+.contact-list a:hover{color:var(--gold)}
+.icon{display:inline-block;width:18px;height:18px;opacity:.7}
+</style>
+
+<!-- ========== EDITABLE CONFIG ========== -->
+<script>
+/* 
+  PROGRAMMES & EVENTS DATA
+  Edit this array to update dates, titles, descriptions, venues, times.
+  Format: { title, date (YYYY-MM-DD for sorting), dateDisplay (human-readable), time, venue, desc, type }
+  'type' can be: 'workshop', 'course', 'ongoing', 'talk'
+  Dates before today auto-move to "Past programmes" section.
+  Today's date: 2026-11-05
+*/
+window.PROGRAMMES = [
+  {
+    title: "Failed Parenting: Causes, Consequences and the Way Forward",
+    date: "2026-11-05",
+    dateDisplay: "05 Nov 2026",
+    time: "10:00 AM to 02:00 PM",
+    venue: "GRSM School, Sangram Bata, Kishtwar",
+    desc: "Annual programme with guest speaker Adnan Al Farooq.",
+    type: "talk",
+    poster: null // Replace null with image path when ready, e.g. "images/event-parenting-2026.jpg"
+  },
+  {
+    title: "Female Personality Development",
+    date: "2026-10-15",
+    dateDisplay: "15 Oct 2026",
+    time: null,
+    venue: null,
+    desc: "A new course on character and confidence, taught through the lives of the women of Islamic history. Women only.",
+    type: "course",
+    poster: null
+  },
+  {
+    title: "The Awareness Movement",
+    date: "2025-01-01", // Ongoing: set to past date so it always appears in upcoming
+    dateDisplay: "Ongoing",
+    time: null,
+    venue: null,
+    desc: "An educational and social initiative by Adnan Al Farooq, reaching students and families with research-based talks.",
+    type: "ongoing",
+    poster: null
+  }
+];
+
+/* FOUNDER DATA */
+window.FOUNDER = {
+  name: "Adnan Al Farooq",
+  bio: "Founder of Albab Islamic University, educator and content creator. He leads the university's research direction, its public talks and the Awareness Movement.",
+  quote: "Faith asks for thinking people. Our work is to give them the tools.",
+  instagramHandle: "adnanalfarooq",
+  photo: "images/founder-photo.jpg" // Update with actual image path once saved
+};
+
+/* LOGO */
+window.LOGO_URL = null; // Replace null with path to logo SVG when ready, e.g. "images/logo.svg"
+
+/* BRANCHES OF STUDY */
+window.BRANCHES = [
+  {
+    name: "Hadith",
+    desc: "The science of collecting, authenticating, and interpreting the sayings and actions of the Prophet.",
+    branches: ["Mustalah of Hadith", "Ilm al-Rijal", "Sharh al-Hadith", "Takhrij", "Hadith Collections Study"]
+  },
+  {
+    name: "Fiqh",
+    desc: "Islamic jurisprudence: the methodology and application of Islamic law to daily life and society.",
+    branches: ["Usul al-Fiqh", "Comparative Fiqh", "Muamalat", "Ibadat", "Judiciary & Fatwa"]
+  },
+  {
+    name: "Logic",
+    desc: "The science of reasoning: deductive, inductive, and critical thinking applied to theological and philosophical questions.",
+    branches: ["Deductive Logic", "Inductive Logic", "Symbolic Logic", "Informal Fallacies", "Critical Thinking"]
+  },
+  {
+    name: "Philosophy",
+    desc: "Metaphysics, epistemology, ethics and the nature of existence as understood through Islamic and rational inquiry.",
+    branches: ["Metaphysics", "Epistemology", "Ethics", "Political Philosophy", "Philosophy of Religion"]
+  },
+  {
+    name: "Psychology",
+    desc: "The science of the human mind, heart and behaviour: cognitive, clinical and neurobiological perspectives aligned with Islamic guidance.",
+    branches: ["Cognitive Psychology", "Behavioral Psychology", "Clinical Psychology", "Social Psychology", "Neuropsychology"]
+  },
+  {
+    name: "Challenges",
+    desc: "Academic study of worldviews that diverge from Islamic thought. Respectful, rigorous critique of their assumptions and claims.",
+    branches: ["Atheism & Materialism", "Liberalism & Secularism", "Feminism", "Scientism", "Postmodern Thought"]
+  },
+  {
+    name: "Modernity",
+    desc: "The history and critique of modern thought: how technology, politics and culture have reshaped society and belief.",
+    branches: ["Postmodernism Critique", "Sovereignty & State", "Secularization Thesis", "Technological Ethics", "Cultural Hegemony"]
+  },
+  {
+    name: "Politics",
+    desc: "Political theory, governance, international relations and the application of Islamic principles to collective decision-making.",
+    branches: ["Political Theory", "Islamic Governance", "International Relations", "Geopolitics", "Public Administration"]
+  },
+  {
+    name: "History",
+    desc: "The study of past societies, events and ideas: Islamic history, world civilizations and historiographical method.",
+    branches: ["Islamic History", "World History", "Ancient Civilizations", "Historiography", "Political History"]
+  },
+  {
+    name: "Economic Studies",
+    desc: "Economics from Islamic and modern perspectives: markets, trade, finance and the ethics of wealth and labour.",
+    branches: ["Islamic Economics", "Microeconomics", "Macroeconomics", "Behavioral Economics", "Finance & Trade"]
+  },
+  {
+    name: "Poetry",
+    desc: "The art and meaning of poetry across Arabic, Urdu, Persian and other traditions, with literary and spiritual analysis.",
+    branches: ["Arabic Poetry", "Urdu Poetry", "Persian Poetry", "Literary Criticism", "Spiritual Poetry"]
+  }
+  /* { name: "Quran", desc: "...", branches: [...] } */
+];
+
+/* FIVE PILLARS */
+window.PILLARS = [
+  {
+    name: "Shahadah",
+    arabic: "الشهادة",
+    rules: "The testimony of faith: La ilaha illallah Muhammad rasulallah. No god but Allah; Muhammad is the messenger of Allah.",
+    steps: "Belief in the heart, profession with the tongue, acceptance in the mind. No conditions or rituals.",
+    significance: "The foundation of Islam. The entry point to the faith and the source of all other practices.",
+    quote: "There is no god but Allah" // Optional
+  },
+  {
+    name: "Salah",
+    arabic: "الصلاة",
+    rules: "Obligatory ritual prayer performed five times a day, facing the Kaaba, with purification (wudu).",
+    steps: "Fajr (dawn), Dhuhr (noon), Asr (afternoon), Maghrib (sunset), Isha (night). Each prayer has specific units (rakat) and movements.",
+    significance: "The spiritual pillar: direct connection to Allah, discipline, and remembrance throughout the day.",
+    quote: "Prayer is the pillar of the faith."
+  },
+  {
+    name: "Zakat",
+    arabic: "الزكاة",
+    rules: "Charitable obligation of 2.5% on wealth held for a full lunar year above the Nisab threshold (87.48g of gold or 612.36g of silver).",
+    steps: "Calculate eligible wealth (gold, silver, cash, merchandise). Calculate 2.5%. Give to eight categories: poor, needy, administrators, those whose hearts are to be softened, slaves, debtors, wayfarers, causes of Allah.",
+    significance: "Purification of wealth, support for the poor, and building community bonds.",
+    quote: "Wealth and children are adornments of life, but the everlasting good deeds are far better."
+  },
+  {
+    name: "Sawm",
+    arabic: "الصوم",
+    rules: "Fasting during the month of Ramadan from dawn to sunset. Abstaining from food, drink, and marital relations.",
+    steps: "Begin each day with the intention (niyyah). Fast from Fajr until sunset. Exemptions: children, elderly, ill, pregnant, nursing, menstruating women, travelers (may make up later).",
+    significance: "Self-discipline, empathy for the poor, spiritual purification, and heightened God-consciousness.",
+    quote: "Fasting is a shield."
+  },
+  {
+    name: "Hajj",
+    arabic: "الحج",
+    rules: "The pilgrimage to Mecca, obligatory once in a lifetime for those who are physically and financially able.",
+    steps: "Performed in Dhul-Hijjah (12th Islamic month). Enter Ihram (pilgrim's state). Perform Tawaf (circumambulation of the Kaaba), Sa'i (walking between Safa and Marwa), stand at Arafat, throw pebbles at Mina, offer sacrifice.",
+    significance: "The greatest gathering of Muslims. Submission to Allah, unity of the ummah, and commemoration of Ibrahim's sacrifice.",
+    quote: "Hajj is Arafat."
+  }
+];
+</script>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Albab Islamic University home">
+      <svg width="28" height="32" viewBox="0 0 28 32" fill="none" aria-hidden="true"><path d="M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z" stroke="#c9a24b" stroke-width="2"/><path d="M14 10c-3 2-4 4-4 7v13h8V17c0-3-1-5-4-7Z" fill="#c9a24b"/></svg>
+      Albab Islamic University
+    </a>
+    <nav aria-label="Main">
+      <a href="#focus">Focus areas</a>
+      <a href="#mapping">Deen through mapping</a>
+      <a href="#events">Programmes</a>
+      <a href="#founder">Founder</a>
+      <a href="#contact">Connect</a>
+    </nav>
+  </div>
+</header>
+
+<a class="float-ig" href="https://www.instagram.com/albabuniversity" target="_blank" rel="noopener">Follow on Instagram</a>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <h1>Knowledge for people who think.</h1>
+    <p class="lead">A global institution dedicated to the preservation and active contextualization of sacred knowledge, bridging Usul al-Deen with neuroscience and clinical AI ethics.</p>
+    <div class="btns">
+      <a class="btn gold" href="#events">See upcoming programmes</a>
+      <a class="btn line" href="https://www.instagram.com/albabuniversity" target="_blank" rel="noopener">Follow on Instagram</a>
+    </div>
+    <div class="est">Established 2025 &nbsp;|&nbsp; 22K+ followers on Instagram</div>
+  </div>
+</div>
+
+<div class="hadith-banner">
+  <div class="wrap" style="max-width:800px">
+    <div class="hadith-arabic">طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ</div>
+    <div class="hadith-translation">Seeking knowledge is an obligation upon every Muslim.</div>
+    <div class="hadith-reference">Sunan Ibn Majah, Hadith no. 224. Graded Sahih by al-Albani.</div>
+  </div>
+</div>
+
+<section id="branches">
+  <div class="wrap">
+    <h2>Branches of study</h2>
+    <p class="sub">Eleven fields of learning, each with foundational disciplines. New areas are added as research deepens.</p>
+    <div class="branches-grid" id="branchesGrid"></div>
+  </div>
+</section>
+
+<section class="pillars-band" id="pillars">
+  <div class="wrap">
+    <h2 style="color:#f4efe0;margin-bottom:28px">Islamic five pillars foundation</h2>
+    <div class="tabs" id="pillarTabs"></div>
+    <div id="pillarContent"></div>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="wrap">
+    <h2>What we study</h2>
+    <p class="sub">Four areas of work that run through every course, paper and event.</p>
+    <div class="pillars">
+      <div class="pillar"><h3>Philosophy, Psychology and Logic</h3><p>Clear reasoning and an understanding of the human mind, used to examine questions of faith and society.</p></div>
+      <div class="pillar"><h3>Research and Modern Challenges</h3><p>Written papers and talks on issues families and communities face today, from addiction to parenting to media influence.</p></div>
+      <div class="pillar"><h3>Quran, Hadith and Fiqh</h3><p>The core Islamic sciences, studied from their sources and taught with context.</p></div>
+      <div class="pillar"><h3>Neuroscience</h3><p>What brain science says about habits, emotions and behaviour, read alongside Islamic guidance.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="mapping" id="mapping">
+  <div class="wrap">
+    <h2>Deen through mapping</h2>
+    <p class="sub">Our teaching method. Every topic is laid out as a map, so students see how ideas connect before they memorise details.</p>
+    <div class="cols">
+      <div><h3>Start with the question</h3><p>Each topic begins with a real problem, not a definition.</p></div>
+      <div><h3>Trace it to the sources</h3><p>Quran, Hadith and the scholars' reasoning are placed on the map.</p></div>
+      <div><h3>Test it with reason</h3><p>Logic and research check the conclusion before it is taught.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="events">
+  <div class="wrap">
+    <h2>Programmes and events</h2>
+    <p class="sub">Recent and upcoming sessions. Follow our Instagram for the latest dates.</p>
+    <div class="events" id="upcomingEvents"></div>
+    <div id="pastEventsContainer" style="display:none;">
+      <h3 style="margin-top:46px;margin-bottom:22px;font-size:20px;color:var(--muted)">Past programmes</h3>
+      <div class="events" id="pastEvents"></div>
+    </div>
+  </div>
+</section>
+
+<section id="founder" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap founder">
+    <div class="quote" id="founderQuote">Faith asks for thinking people. Our work is to give them the tools.</div>
+    <div>
+      <div id="founderPhotoContainer"></div>
+      <h2 id="founderName">Adnan Al Farooq</h2>
+      <p id="founderBio">Founder of Albab Islamic University, educator and content creator. He leads the university's research direction, its public talks and the Awareness Movement.</p>
+      <div class="links"><a id="founderLink" href="https://www.instagram.com/adnanalfarooq" target="_blank" rel="noopener">@adnanalfarooq</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p class="sub">Reach the Founder & Director, follow our work, or inquire about collaborations.</p>
+    <div class="contact-list">
+      <a href="tel:+917051913270">
+        <span class="icon">📱</span> +91 7051913270
+      </a>
+      <a href="https://www.instagram.com/albabuniversity" target="_blank" rel="noopener">
+        <span class="icon">📷</span> Instagram: @albabuniversity
+      </a>
+      <a href="https://www.instagram.com/adnanalfarooq" target="_blank" rel="noopener">
+        <span class="icon">👤</span> Founder: @adnanalfarooq
+      </a>
+      <!-- <a href="https://www.youtube.com/@albabuniversity" target="_blank" rel="noopener">
+        <span class="icon">▶️</span> YouTube: @albabuniversity
+      </a> -->
+      <!-- <a href="mailto:hello@albab.edu">
+        <span class="icon">✉️</span> hello@albab.edu
+      </a> -->
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2024–2026 Albab Islamic University. All rights reserved.</span>
+    <span>Designed for Ulul Albab</span>
+  </div>
+</footer>
+
+<!-- ========== RENDER LOGIC ========== -->
+<script>
+function renderEvents() {
+  const today = new Date('2026-11-05'); // Set to current date for testing
+  const upcoming = [];
+  const past = [];
+  
+  window.PROGRAMMES.forEach(event => {
+    const eventDate = new Date(event.date);
+    if (eventDate >= today) {
+      upcoming.push(event);
+    } else {
+      past.push(event);
+    }
+  });
+  
+  // Sort upcoming by date (ascending), keep "Ongoing" at the start
+  upcoming.sort((a, b) => {
+    if (a.type === 'ongoing') return -1;
+    if (b.type === 'ongoing') return 1;
+    return new Date(a.date) - new Date(b.date);
+  });
+  
+  // Sort past by date (descending)
+  past.sort((a, b) => new Date(b.date) - new Date(a.date));
+  
+  const upcomingHtml = upcoming.map(e => `
+    <div class="event">
+      <div class="date">${e.dateDisplay}${e.time ? `<br><small style="font-family:'Source Sans 3';font-weight:400;font-size:15px;color:var(--muted)">${e.time}</small>` : ''}</div>
+      <div>${e.poster ? `<img src="${e.poster}" alt="${e.title}" class="event-poster">` : ''}<h3>${e.title}</h3><p>${e.venue ? `<strong>${e.venue}</strong><br>` : ''}${e.desc}</p></div>
+    </div>
+  `).join('');
+  
+  const pastHtml = past.map(e => `
+    <div class="event">
+      <div class="date">${e.dateDisplay}${e.time ? `<br><small style="font-family:'Source Sans 3';font-weight:400;font-size:15px;color:var(--muted)">${e.time}</small>` : ''}</div>
+      <div>${e.poster ? `<img src="${e.poster}" alt="${e.title}" class="event-poster">` : ''}<h3>${e.title}</h3><p>${e.venue ? `<strong>${e.venue}</strong><br>` : ''}${e.desc}</p></div>
+    </div>
+  `).join('');
+  
+  document.getElementById('upcomingEvents').innerHTML = upcomingHtml;
+  
+  if (past.length > 0) {
+    document.getElementById('pastEventsContainer').style.display = 'block';
+    document.getElementById('pastEvents').innerHTML = pastHtml;
+  }
+}
+
+function renderFounder() {
+  const founder = window.FOUNDER;
+  document.getElementById('founderQuote').textContent = founder.quote;
+  document.getElementById('founderName').textContent = founder.name;
+  document.getElementById('founderBio').textContent = founder.bio;
+  document.getElementById('founderLink').href = `https://www.instagram.com/${founder.instagramHandle}`;
+  document.getElementById('founderLink').textContent = `@${founder.instagramHandle}`;
+  
+  // Render founder photo if URL provided
+  if (founder.photo) {
+    const photoHtml = `<img src="${founder.photo}" alt="${founder.name}" class="founder-photo">`;
+    document.getElementById('founderPhotoContainer').innerHTML = photoHtml;
+  }
+}
+
+// Run on page load
+document.addEventListener('DOMContentLoaded', () => {
+  renderEvents();
+  renderFounder();
+  renderBranches();
+  renderPillars();
+});
+
+function renderBranches() {
+  const grid = document.getElementById('branchesGrid');
+  const html = window.BRANCHES.map(branch => `
+    <div class="branch-col">
+      <h3>${branch.name}</h3>
+      <p>${branch.desc}</p>
+      <ul>
+        ${branch.branches.map(b => `<li>${b}</li>`).join('')}
+      </ul>
+    </div>
+  `).join('');
+  grid.innerHTML = html;
+}
+
+function renderPillars() {
+  const tabsContainer = document.getElementById('pillarTabs');
+  const contentContainer = document.getElementById('pillarContent');
+  
+  const tabsHtml = window.PILLARS.map((pillar, idx) => `
+    <button class="tab-btn ${idx === 0 ? 'active' : ''}" data-tab="${idx}" onclick="switchTab(${idx})">${pillar.name}</button>
+  `).join('');
+  
+  const contentHtml = window.PILLARS.map((pillar, idx) => `
+    <div class="tab-content ${idx === 0 ? 'active' : ''}" id="tab-${idx}">
+      <div class="pillar-name">${pillar.arabic}</div>
+      <div class="pillar-section">
+        <strong>The rules and conditions</strong>
+        <p>${pillar.rules}</p>
+      </div>
+      <div class="pillar-section">
+        <strong>The practical steps</strong>
+        <p>${pillar.steps}</p>
+      </div>
+      <div class="pillar-section">
+        <strong>Spiritual significance</strong>
+        <p>${pillar.significance}</p>
+      </div>
+      ${pillar.quote ? `<div class="pillar-quote">"${pillar.quote}"</div>` : ''}
+    </div>
+  `).join('');
+  
+  tabsContainer.innerHTML = tabsHtml;
+  contentContainer.innerHTML = contentHtml;
+}
+
+function switchTab(tabIdx) {
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+  document.querySelector(`[data-tab="${tabIdx}"]`).classList.add('active');
+  document.getElementById(`tab-${tabIdx}`).classList.add('active');
+}
+</script>
+</body>
+</html>
