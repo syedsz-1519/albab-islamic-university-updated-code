@@ -5,7 +5,7 @@ export default defineConfig({
   publicDir: 'public',
   build: {
     outDir: 'dist',
-    minify: 'terser',
+    minify: false,
     target: 'es2020',
     cssCodeSplit: false,
     sourcemap: false,
