@@ -31,7 +31,7 @@
         <div class="brand-subtitle">Islamic University</div>
       </div>
     </a>
-    <nav aria-label="Main navigation">
+    <nav aria-label="Main navigation" id="main-nav" class="main-nav">
       <a href="/">Home</a>
       <a href="/about">About</a>
       <a href="/programmes">Programmes</a>
@@ -39,6 +39,11 @@
       <a href="/explore">Explore</a>
       <a href="/contact">Contact</a>
     </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
 
@@ -199,6 +204,27 @@
 <script type="module" src="/assets/site.js"></script>
 <script type="module" src="/assets/scroll-spy.js"></script>
 <script>
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.getElementById('menu-toggle');
+  const mainNav = document.getElementById('main-nav');
+  
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', mainNav.classList.contains('active'));
+    });
+    
+    // Close menu when a link is clicked
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+});
+
 // Render programmes preview (6 featured)
 function renderProgrammesPreview() {
   const preview = PROGRAMMES.slice(0, 6);
