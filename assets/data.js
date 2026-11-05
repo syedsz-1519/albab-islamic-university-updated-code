@@ -1,462 +1,334 @@
 /* ALBAB ISLAMIC UNIVERSITY — DATA.JS
-   Central configuration for all programmes, events, and hadith data.
+   Central configuration for all programmes, events, and dhikr data.
    Edit this file to update content across the site.
 */
 
 /* ========== PROGRAMMES ========== */
-const PROGRAMMES = [
+window.PROGRAMMES = [
   {
     id: "quran",
     name: "Quran and Tafsir",
-    summary: "Study of the Quran through classical and contemporary tafsir.",
+    arabicName: "تَفْسِيرُ الْقُرْآنِ الْكَرِيمِ",
+    icon: "📖",
+    summary: "The fountainhead of revelation. Deep dive into exegesis, structural rules, rhetorical miracles, historic context, and precise preservation methodology.",
     category: "Islamic Sciences",
-    branches: [
-      "TODO: Branch 1",
-      "TODO: Branch 2",
-      "TODO: Branch 3",
-      "TODO: Branch 4",
-      "TODO: Branch 5"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "TODO: Full overview text",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    branches: ["Tafseer", "Uloom al-Qur'an", "Qira'at", "Hifz & Tajweed", "Qur'anic Arabic"],
+    level: "Beginner to Advanced",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Study the Quranic sciences from their sources with classical tafsir methodology, understanding the layers of meaning and application to contemporary challenges.",
+    who: "Anyone seeking deep understanding of the Quran and its sciences",
+    outcomes: "Master Quranic interpretation, preservation, and application"
   },
   {
     id: "hadith",
     name: "Hadith",
-    summary: "The prophetic path: authentication, narrators, commentary, chain analysis, and classical collections.",
+    arabicName: "عِلْمُ الْحَدِيثِ الشَّرِيفِ",
+    icon: "💬",
+    summary: "The prophetic path: Study the scientific principles of narrations, the critical biography of narrators, chain authenticity verification, and application.",
     category: "Islamic Sciences",
-    branches: [
-      "Mustalah of Hadith",
-      "Ilm al-Rijal",
-      "Sharh al-Hadith",
-      "Takhrij",
-      "Hadith Collections Study"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "A comprehensive study of the science of hadith covering authentication methodologies and classical scholarship.",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    branches: ["Mustalah of Hadith", "Ilm al-Rijal", "Sharh al-Hadith", "Takhrij", "Hadith Collections Study"],
+    level: "Intermediate to Advanced",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Master the methodology of hadith criticism, verification, and scholarly tradition from the Six Authentic Collections and beyond.",
+    who: "Scholars and serious students of Islamic sciences",
+    outcomes: "Learn hadith authentication and scholarly criticism"
   },
   {
     id: "fiqh",
     name: "Fiqh",
-    summary: "Islamic jurisprudence: principles, schools of law, and application to modern contexts.",
+    arabicName: "الْفِقْهُ الْإِسْلَامِيُّ",
+    icon: "⚖️",
+    summary: "Islamic jurisprudence and systematic execution. Grasp legal principles, comparative school methods, contracts of modern commerce, and ethical decree generation.",
     category: "Islamic Sciences",
-    branches: [
-      "Usul al-Fiqh",
-      "Comparative Fiqh",
-      "Muamalat",
-      "Ibadat",
-      "Judiciary & Fatwa"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "Study of Islamic legal methodology and its application across different schools of jurisprudence.",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    branches: ["Usul al-Fiqh", "Comparative Fiqh", "Muamalat", "Ibadat", "Judiciary & Fatwa"],
+    level: "Beginner to Advanced",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Study Islamic law from primary sources, understanding the four schools (madhabs) and their methodologies for solving contemporary issues.",
+    who: "Anyone seeking Islamic legal knowledge and practical guidance",
+    outcomes: "Understand Islamic law and apply it to modern contexts"
   },
   {
     id: "kalam",
     name: "Kalam (Dialectic Theology)",
-    summary: "Classical and contemporary Islamic theology through rational discourse.",
-    category: "Islamic Sciences",
-    branches: [
-      "TODO: Branch 1",
-      "TODO: Branch 2",
-      "TODO: Branch 3",
-      "TODO: Branch 4",
-      "TODO: Branch 5"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "TODO: Full overview text",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    arabicName: "عِلْمُ الْكَلَامِ",
+    icon: "🔮",
+    summary: "Theological inquiry using rational discourse. Study classical and contemporary Islamic theology, addressing philosophical challenges to creed.",
+    category: "Theology and logic",
+    branches: ["Classical Kalam", "Aqeedah", "Islamic Metaphysics", "Divine Attributes", "Free Will & Predestination"],
+    level: "Intermediate to Advanced",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Explore Islamic theology through the lens of reason, understanding how scholars reconciled revelation with philosophical inquiry.",
+    who: "Intellectually engaged students seeking theological depth",
+    outcomes: "Develop sophisticated theological understanding"
   },
   {
-    id: "muamalat",
+    id: "muamalat-ethics",
     name: "Mu'amalat and Civic Ethics",
-    summary: "Islamic economics, social ethics, and governance in contemporary societies.",
-    category: "Islamic Sciences",
-    branches: [
-      "TODO: Branch 1",
-      "TODO: Branch 2",
-      "TODO: Branch 3",
-      "TODO: Branch 4",
-      "TODO: Branch 5"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "TODO: Full overview text",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    arabicName: "الْأَخْلَاقُ الْإِسْلَامِيَّةُ",
+    icon: "🤝",
+    summary: "Ethical frameworks for individual and communal flourishing. Grasp Islamic principles on wealth, commerce, justice, and social responsibility.",
+    category: "Ethics",
+    branches: ["Islamic Economics", "Business Ethics", "Social Justice", "Environmental Stewardship", "Modern Civic Values"],
+    level: "Beginner to Intermediate",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Apply Islamic ethics to modern economic and social systems, addressing inequality and sustainable development.",
+    who: "Professionals, entrepreneurs, and socially conscious individuals",
+    outcomes: "Integrate Islamic ethics into professional and civic life"
   },
   {
     id: "logic",
     name: "Logic",
-    summary: "Deductive, inductive, and symbolic reasoning applied to philosophical and theological inquiry.",
-    category: "Reasoning",
-    branches: [
-      "Deductive Logic",
-      "Inductive Logic",
-      "Symbolic Logic",
-      "Informal Fallacies",
-      "Critical Thinking"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "Comprehensive study of logical frameworks and their application to Islamic and contemporary thought.",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    arabicName: "الْمَنْطِقُ",
+    icon: "01\n10",
+    summary: "The standard of sound reasoning. Master deductive synergistic systems, inductive research, formal notation of arguments, and identification of intellectual fallacies.",
+    category: "Theology and logic",
+    branches: ["Deductive Logic", "Inductive Logic", "Symbolic Logic", "Informal Fallacies", "Critical Thinking"],
+    level: "Intermediate to Advanced",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Study classical Islamic logic and modern critical thinking to strengthen intellectual faculties and avoid sophistry.",
+    who: "Students of philosophy and rigorous reasoning",
+    outcomes: "Master logical reasoning and critical analysis"
   },
   {
     id: "philosophy",
     name: "Philosophy",
-    summary: "Metaphysics, epistemology, ethics, and their intersection with Islamic thought.",
-    category: "Reasoning",
-    branches: [
-      "Metaphysics",
-      "Epistemology",
-      "Ethics",
-      "Political Philosophy",
-      "Philosophy of Religion"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "Exploration of foundational philosophical questions through Islamic and Western perspectives.",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    arabicName: "الْفَلْسَفَةُ الْإِسْلَامِيَّةُ",
+    icon: "◎",
+    summary: "The analytical arena. Reconstruct core paradigms, evaluate theories of knowing, study classic morals, and critique secular political thought framework.",
+    category: "Theology and logic",
+    branches: ["Metaphysics", "Epistemology", "Ethics", "Political Philosophy", "Philosophy of Religion"],
+    level: "Advanced",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Engage with Islamic philosophical tradition and contemporary secular thought, developing critical analysis skills.",
+    who: "Advanced students seeking philosophical rigor",
+    outcomes: "Develop sophisticated philosophical analysis"
   },
   {
     id: "psychology",
     name: "Psychology",
-    summary: "The human mind and behaviour: cognitive, clinical, and neurobiological approaches aligned with Islamic guidance.",
+    arabicName: "عِلْمُ النَّفْسِ الْإِسْلَامِيُّ",
+    icon: "⊕",
+    summary: "Theories of the Soul (Nafs) integrated with modern cognitive neuroscience and ACT models. Bridge classical Islamic psychology with contemporary research.",
     category: "Modern Studies",
-    branches: [
-      "Cognitive Psychology",
-      "Behavioral Psychology",
-      "Clinical Psychology",
-      "Social Psychology",
-      "Neuropsychology"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "Integration of contemporary psychological science with Islamic understanding of the human nafs (self).",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    branches: ["Cognitive Psychology", "Behavioral Psychology", "Clinical Psychology", "Social Psychology", "Neuropsychology"],
+    level: "Intermediate to Advanced",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Study human psychology through both Islamic and modern scientific lenses, understanding the soul and mind holistically.",
+    who: "Healthcare professionals, counselors, and psychology students",
+    outcomes: "Integrate Islamic and modern psychology"
   },
   {
     id: "challenges",
     name: "Challenges",
-    summary: "Respectful academic critique of contemporary ideologies and worldviews.",
+    arabicName: "التَّحَدِّيَاتُ الْمُعَاصِرَةُ",
+    icon: "⚠️",
+    summary: "Scholarly critique of contemporary ideologies. Undertake a rigorous, respectful academic breakdown of current sociopolitical and theological challenges.",
     category: "Modern Studies",
-    branches: [
-      "Atheism",
-      "Liberalism",
-      "Feminism",
-      "Materialism",
-      "Secularism"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "Rigorous, respectful engagement with ideological systems and their assumptions.",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    branches: ["Atheism", "Liberalism", "Feminism", "Materialism", "Secularism"],
+    level: "Advanced",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Critically examine modern ideologies from an Islamic perspective, developing intellectual resilience and articulate responses.",
+    who: "Intellectually engaged students seeking critical engagement",
+    outcomes: "Develop informed responses to modern ideologies"
   },
   {
     id: "modernity",
     name: "Modernity",
-    summary: "History and critique of modern thought: technology, politics, culture, and their reshaping of belief.",
+    arabicName: "الْحَدَاثَةُ",
+    icon: "⚙️",
+    summary: "Deconstruct the historical, philosophical, and social architectures of the modern epoch. Investigate secularization, post-structural models, and deep ethics of technology.",
     category: "Modern Studies",
-    branches: [
-      "Postmodernism Critique",
-      "Sovereignty & State",
-      "Secularization Thesis",
-      "Technological Ethics",
-      "Cultural Hegemony"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "Analysis of how modernity has transformed society, knowledge, and religious life.",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    branches: ["Postmodernism Critique", "Sovereignty & State", "Secularization Thesis", "Technological Ethics", "Cultural Hegemony"],
+    level: "Advanced",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Analyze the philosophical foundations and social impacts of modernity, proposing Islamic alternatives.",
+    who: "Advanced scholars and intellectuals",
+    outcomes: "Understand modernity and propose Islamic responses"
   },
   {
     id: "politics",
     name: "Politics",
-    summary: "Political theory, governance, and the application of Islamic principles to collective decision-making.",
+    arabicName: "الْعِلْمُ السِّيَاسِيُّ",
+    icon: "🏛️",
+    summary: "Diplomatic systems, classical treaties, model sovereignty, and global modern affairs. Study governance through Islamic and comparative lenses.",
     category: "Humanities",
-    branches: [
-      "Political Theory",
-      "Islamic Governance",
-      "International Relations",
-      "Geopolitics",
-      "Public Administration"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "Examination of political structures, Islamic governance models, and contemporary geopolitics.",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    branches: ["Political Theory", "Islamic Governance", "International Relations", "Geopolitics", "Public Administration"],
+    level: "Intermediate to Advanced",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Explore Islamic political thought and contemporary international relations, preparing for informed civic engagement.",
+    who: "Policy makers, students of governance, and civic leaders",
+    outcomes: "Understand Islamic governance and modern politics"
   },
   {
     id: "history",
     name: "History",
-    summary: "Islamic, world, and ancient history; historiographical method and political history.",
+    arabicName: "التَّارِيخُ الْإِسْلَامِيُّ",
+    icon: "🕰️",
+    summary: "Annalling historic cycles, political shifts, and global socio-religious evolutions. Understand causation, patterns, and lessons from Islamic civilization.",
     category: "Humanities",
-    branches: [
-      "Islamic History",
-      "World History",
-      "Ancient Civilizations",
-      "Historiography",
-      "Political History"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "Study of past societies, ideas, and events with attention to historical methodology.",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    branches: ["Islamic History", "World History", "Ancient Civilizations", "Historiography", "Political History"],
+    level: "Beginner to Intermediate",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Study Islamic and world history from primary sources, understanding civilizational patterns and contemporary relevance.",
+    who: "History enthusiasts and students of civilization",
+    outcomes: "Understand Islamic and world history"
   },
   {
     id: "economics",
     name: "Economic Studies",
-    summary: "Islamic and modern economics: markets, trade, finance, and the ethics of wealth.",
+    arabicName: "الاقْتِصَادُ الْإِسْلَامِيُّ",
+    icon: "◉◉",
+    summary: "Wealth distribution ethics, behavioral incentives, interest-free finance, and trade models. Study Islamic economics and modern economic theory comparatively.",
     category: "Humanities",
-    branches: [
-      "Islamic Economics",
-      "Microeconomics",
-      "Macroeconomics",
-      "Behavioral Economics",
-      "Finance & Trade"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "Integration of Islamic economic principles with contemporary economic theory and practice.",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    branches: ["Islamic Economics", "Microeconomics", "Macroeconomics", "Behavioral Economics", "Finance & Trade"],
+    level: "Intermediate to Advanced",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Master Islamic economic principles and contemporary economics, addressing inequality and sustainable development.",
+    who: "Economists, business leaders, and finance professionals",
+    outcomes: "Apply Islamic economics to modern challenges"
   },
   {
     id: "poetry",
     name: "Poetry",
-    summary: "Arabic, Urdu, and Persian poetry: literary criticism and spiritual analysis.",
+    arabicName: "الشِّعْرُ الْإِسْلَامِيُّ",
+    icon: "🍃",
+    summary: "Soul of classical rhetoric, structural metrics, mystical couplets, and linguistic prose development. Study classical poetry across cultures.",
     category: "Humanities",
-    branches: [
-      "Arabic Poetry",
-      "Urdu Poetry",
-      "Persian Poetry",
-      "Literary Criticism",
-      "Spiritual Poetry"
-    ],
-    level: "TODO: Level",
-    duration: "TODO: Duration",
-    mode: "TODO: Mode",
-    overview: "Exploration of poetic traditions across Islamic cultures and their spiritual dimensions.",
-    who: "TODO: Who it is for",
-    outcomes: "TODO: Learning outcomes"
+    branches: ["Arabic Poetry", "Urdu Poetry", "Persian Poetry", "Literary Criticism", "Spiritual Poetry"],
+    level: "Beginner to Intermediate",
+    duration: "Ongoing",
+    mode: "Online & Hybrid",
+    overview: "Analyze and appreciate classical poetry in Arabic, Persian, and Urdu, understanding literary techniques and spiritual dimensions.",
+    who: "Literature lovers and language enthusiasts",
+    outcomes: "Appreciate and analyze classical poetry"
+  }
+];
+
+/* ========== DHIKR PHRASES WITH TIMER OPTIONS ========== */
+window.DHIKR_PHRASES = [
+  { phrase: "سُبْحَانَ اللَّهِ", transliteration: "SubhanAllah", meaning: "Glory be to Allah", color: "#e74c3c" },
+  { phrase: "الْحَمْدُ لِلَّهِ", transliteration: "Alhamdulillah", meaning: "All praise to Allah", color: "#f39c12" },
+  { phrase: "اللَّهُ أَكْبَرُ", transliteration: "Allahu Akbar", meaning: "Allah is the Greatest", color: "#27ae60" },
+  { phrase: "لَا إِلَهَ إِلَّا اللَّهُ", transliteration: "La ilaha illallah", meaning: "There is no deity except Allah", color: "#2980b9" },
+  { phrase: "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", transliteration: "La hawla wa la quwwata illa billah", meaning: "There is no power except with Allah", color: "#8e44ad" },
+  { phrase: "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ", transliteration: "Subhan'allahi wa bihamdihi", meaning: "Glory and praise to Allah", color: "#c0392b" },
+  { phrase: "أَسْتَغْفِرُ اللَّهَ", transliteration: "Astaghfirullah", meaning: "I seek forgiveness from Allah", color: "#16a085" },
+  { phrase: "حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ", transliteration: "Hasbunallahu wa ni'mal wakil", meaning: "Allah is sufficient for us and the best trustee", color: "#d35400" }
+];
+
+/* ========== DHIKR TIMER OPTIONS ========== */
+window.DHIKR_TIMERS = [
+  { duration: 60, label: "1 Minute", displayLabel: "1 min" },
+  { duration: 180, label: "3 Minutes", displayLabel: "3 min" },
+  { duration: 300, label: "5 Minutes", displayLabel: "5 min" }
+];
+
+/* ========== FIVE PILLARS DETAILED DATA ========== */
+window.FIVE_PILLARS = [
+  {
+    id: "shahadah",
+    name: "Shahadah",
+    arabicName: "ٱلشَّهَادَةُ",
+    englishName: "Declaration of Faith",
+    icon: "📖",
+    tagline: "Declaration of Faith",
+    quote: "The formal entry into Islam and the absolute foundation of a Muslim\'s entire belief system.",
+    rules: "One must recite the phrase aloud with total conviction and understanding of its weight.",
+    steps: "Reciting \"La ilaha illallah, Muhammadur rasulullah\" (There is no deity except Allah, and Muhammad is the Messenger of Allah).",
+    significance: "It marks the transition to living a life submitted to God. It is traditionally the first thing whispered into a newborn\'s ear and the ideal final words a person says before passing away.",
+    scriptureProof: "Surah Muhammad 47:19"
+  },
+  {
+    id: "salah",
+    name: "Salah",
+    arabicName: "ٱلصَّلَاةُ",
+    englishName: "Prayer",
+    icon: "⊙",
+    tagline: "Sacred Commemoration",
+    quote: "The systematic spiritual anchor repeating five times across the daily cosmic cycles.",
+    rules: "Before praying, a person must perform Wudu (ritual washing with clean water). They must wear clean clothes, cover private areas appropriately, and face toward the Kaaba in Mecca.",
+    steps: "The prayer consists of sets of physical standing, bowing, and prostration (Rak'ahs) combined with reciting chapters from the Quran.",
+    significance: "Salah is a direct connection to Allah, a moment of reflection, and a foundation for righteous living. It disciplines the soul and reminds believers of their purpose.",
+    scriptureProof: "The Five Obligatory Prayer Times:\nFajr: Performed at dawn, before sunrise.\nDhuhr: Performed just after noon, when the sun passes its highest point.\nAsr: Performed in the late afternoon.\nMaghrib: Performed immediately after sunset.\nIsha: Performed during the dark night hours."
+  },
+  {
+    id: "zakat",
+    name: "Zakat",
+    arabicName: "ٱلزَّكَاةُ",
+    englishName: "Almsgiving",
+    icon: "⊟",
+    tagline: "Purifying Alms",
+    quote: "An elegant, systematic wealth redistribution mechanism built directly into core jurisprudence.",
+    rules: "It is not calculated on personal income alone, but on accumulated personal wealth (such as gold, silver, savings accounts, or investments) that has been kept for a full lunar year. This wealth must cross a minimum threshold called the Nisab (the value of 87.48 grams of gold or 612.36 grams of silver).",
+    steps: "If a Muslim qualifies, they calculate exactly 2.5% of their eligible stagnant wealth and distribute it directly to specified categories of needy people.",
+    significance: "The Arabic word means \"purification,\" as it cleanse a believer\'s heart from greed and purifies the leftover wealth. It fosters social justice and equity within communities.",
+    scriptureProof: "Surah Al-Baqarah 2:110"
+  },
+  {
+    id: "sawm",
+    name: "Sawm",
+    arabicName: "ٱلصَّوْمُ",
+    englishName: "Fasting",
+    icon: "❤️",
+    tagline: "Annual Intensive Masterclass",
+    quote: "An annual intensive masterclass in cognitive self-regulation during the month of Ramadan.",
+    rules: "Fasting is mandatory for every healthy, adult Muslim during the entire 9th lunar month of the Islamic calendar (Ramadan). Children, travelers, the sick, the elderly, pregnant or menstruating women, and those with legitimate hardship are exempt and can make up missed fasts later.",
+    steps: "Believers must completely abstain from all food, liquids, smoking, and intimate relations from the first light of dawn (Fajr) to the exact moment of sunset (Maghrib).",
+    significance: "By denying the physical body its basic necessities, a person learns empathy for the poor and redirects their focus entirely to prayer, Quran reading, and charity.",
+    scriptureProof: "Surah Al-Baqarah 2:183: \"O you who believe, fasting is prescribed for you as it was prescribed for those before you, that you might become conscious of Allah.\""
+  },
+  {
+    id: "hajj",
+    name: "Hajj",
+    arabicName: "ٱلْحَجُّ",
+    englishName: "Pilgrimage",
+    icon: "🕋",
+    tagline: "Ultimate Transformative Convergence",
+    quote: "The ultimate, transformative convergence of global humanity in the footsteps of prophets.",
+    rules: "It is required only once in a lifetime, and only for adults who possess the physical health and sufficient independent funds to complete the journey without leaving their families in debt.",
+    steps: "Pilgrims travel to Mecca during the 12th month of the Islamic calendar (Dhul-Hijjah). They put on identical, simple white pieces of unstitched cloth (Ihram) to remove any social classes or wealth status. Over five days, they perform a series of unified rituals, including walking seven times around the Kaaba (Tawaf), standing in prayer at Mount Arafat, and symbolically throwing pebbles at the Jamarat (the stoning of evil thoughts and impulses).",
+    significance: "Completing a sincere Hajj successfully wipes clean a person\'s life history of mistakes, leaving them as spiritually pure as a newborn child.",
+    scriptureProof: "The standing at Arafat is the climax: the spiritual moment when millions stand together in one open valley, equal before their Creator, imploring for forgiveness and divine mercy."
   }
 ];
 
 /* ========== EVENTS ========== */
-const EVENTS = [
+window.EVENTS = [
   {
-    id: "failed-parenting",
     title: "Failed Parenting: Causes, Consequences and the Way Forward",
-    date: new Date("2026-11-05"),
-    startTime: "10:00 AM",
-    endTime: "02:00 PM",
+    date: "2026-11-05",
+    time: "10:00 AM–2:00 PM",
     venue: "GRSM School, Sangram Bata, Kishtwar",
-    description: "Annual programme with guest speaker Adnan Al Farooq.",
-    type: "workshop",
-    featured: true
+    speaker: "Adnan Al Farooq",
+    description: "Guest speaker session on parenting challenges and Islamic approaches."
   },
   {
-    id: "female-dev",
     title: "Female Personality Development",
-    date: new Date("2026-10-15"),
-    startTime: null,
-    endTime: null,
-    venue: null,
-    description: "A new course on character and confidence, taught through the lives of the women of Islamic history. Women only.",
-    type: "course",
-    featured: true
+    date: "2026-10-15",
+    time: "TBD",
+    venue: "Online",
+    speaker: "TBD",
+    description: "New course: Women's development through the lives of women in Islamic history. Women only."
   },
   {
-    id: "awareness",
     title: "The Awareness Movement",
-    date: new Date("2025-01-01"), // Ongoing: set to past date
-    startTime: null,
-    endTime: null,
-    venue: null,
-    description: "An educational and social initiative by Adnan Al Farooq, reaching students and families with research-based talks.",
-    type: "ongoing",
-    featured: true
+    date: "2026-09-01",
+    time: "Ongoing",
+    venue: "Multiple",
+    speaker: "Adnan Al Farooq",
+    description: "Educational & social initiative by the founder."
   }
 ];
-
-/* ========== FIVE PILLARS ========== */
-const FIVE_PILLARS = [
-  {
-    name: "Shahadah",
-    arabic: "الشهادة",
-    rules: "The testimony of faith: La ilaha illallah Muhammad rasulallah. No god but Allah; Muhammad is the messenger of Allah.",
-    steps: "Belief in the heart, profession with the tongue, acceptance in the mind. No conditions or rituals.",
-    significance: "The foundation of Islam. The entry point to the faith and the source of all other practices.",
-    proof: "Surah Muhammad 47:19"
-  },
-  {
-    name: "Salah",
-    arabic: "الصلاة",
-    rules: "Obligatory ritual prayer performed five times a day, facing the Kaaba, with purification (wudu).",
-    steps: "Fajr (dawn, before sunrise), Dhuhr (just after noon), Asr (late afternoon), Maghrib (immediately after sunset), Isha (dark night). Each prayer has specific units (rakat) and movements.",
-    significance: "The spiritual pillar: direct connection to Allah, discipline, and remembrance throughout the day.",
-    proof: "TODO: Proof verse"
-  },
-  {
-    name: "Zakat",
-    arabic: "الزكاة",
-    rules: "Charitable obligation of 2.5% on wealth held for a full lunar year above the Nisab threshold (87.48g of gold or 612.36g of silver).",
-    steps: "Calculate eligible wealth (gold, silver, cash, merchandise). Calculate 2.5%. Give to eight categories of recipients.",
-    significance: "Purification of wealth, support for the poor, and building community bonds.",
-    proof: "TODO: Proof verse"
-  },
-  {
-    name: "Sawm",
-    arabic: "الصوم",
-    rules: "Fasting during the month of Ramadan from dawn to sunset. Abstaining from food, drink, and marital relations.",
-    steps: "Begin each day with the intention (niyyah). Fast from Fajr until sunset. Exemptions: children, travelers, sick, elderly, pregnant or menstruating women (may make up later).",
-    significance: "Self-discipline, empathy for the poor, spiritual purification, and heightened God-consciousness.",
-    proof: "Surah Al-Baqarah 2:183"
-  },
-  {
-    name: "Hajj",
-    arabic: "الحج",
-    rules: "The pilgrimage to Mecca, obligatory once in a lifetime for those who are physically and financially able.",
-    steps: "Performed in Dhul-Hijjah (12th Islamic month). Enter Ihram (pilgrim's state). Perform Tawaf (circumambulation of the Kaaba), Sa'i (walking between Safa and Marwa), stand at Arafat, throw pebbles at Mina, offer sacrifice.",
-    significance: "The greatest gathering of Muslims. Submission to Allah, unity of the ummah, and commemoration of Ibrahim's sacrifice.",
-    proof: "TODO: Proof verse"
-  }
-];
-
-/* ========== HADITH DATABASE ========== */
-const HADITH_DATA = [
-  {
-    id: "ilm-001",
-    arabic: "طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ",
-    translation: "Seeking knowledge is an obligation upon every Muslim.",
-    source: "Sunan Ibn Majah",
-    hadithNumber: "224",
-    grading: "Graded Sahih by al-Albani",
-    narrator: "Anas ibn Malik",
-    topic: "Seeking Knowledge"
-  }
-  /* TODO: Add more hadith entries following the same format */
-];
-
-/* ========== SCHOLASTIC HUBS (for Celestial Globe) ========== */
-const SCHOLASTIC_HUBS = [
-  {
-    id: "medina",
-    name: "Medina",
-    region: "Arabian Peninsula",
-    facts: [
-      "TODO: Historical fact 1 (to be verified by academic council)",
-      "TODO: Historical fact 2 (to be verified by academic council)",
-      "TODO: Historical fact 3 (to be verified by academic council)"
-    ]
-  },
-  {
-    id: "bukhara",
-    name: "Bukhara",
-    region: "Central Asia",
-    facts: [
-      "TODO: Historical fact 1 (to be verified by academic council)",
-      "TODO: Historical fact 2 (to be verified by academic council)",
-      "TODO: Historical fact 3 (to be verified by academic council)"
-    ]
-  },
-  {
-    id: "baghdad",
-    name: "Baghdad",
-    region: "Iraq",
-    facts: [
-      "TODO: Historical fact 1 (to be verified by academic council)",
-      "TODO: Historical fact 2 (to be verified by academic council)",
-      "TODO: Historical fact 3 (to be verified by academic council)"
-    ]
-  },
-  {
-    id: "cairo",
-    name: "Cairo",
-    region: "Egypt",
-    facts: [
-      "TODO: Historical fact 1 (to be verified by academic council)",
-      "TODO: Historical fact 2 (to be verified by academic council)",
-      "TODO: Historical fact 3 (to be verified by academic council)"
-    ]
-  },
-  {
-    id: "fez",
-    name: "Fez",
-    region: "Morocco",
-    facts: [
-      "TODO: Historical fact 1 (to be verified by academic council)",
-      "TODO: Historical fact 2 (to be verified by academic council)",
-      "TODO: Historical fact 3 (to be verified by academic council)"
-    ]
-  },
-  {
-    id: "cordoba",
-    name: "Córdoba",
-    region: "Al-Andalus (Spain)",
-    facts: [
-      "TODO: Historical fact 1 (to be verified by academic council)",
-      "TODO: Historical fact 2 (to be verified by academic council)",
-      "TODO: Historical fact 3 (to be verified by academic council)"
-    ]
-  }
-];
-
-/* ========== DHIKR DATA ========== */
-const DHIKR_PHRASES = [
-  { id: "subhanallah", text: "Subhan'Allah", meaning: "Glory be to Allah", arabic: "سُبْحَانَ اللَّهِ" },
-  { id: "alhamdulillah", text: "Alhamdulillah", meaning: "All praise is due to Allah", arabic: "الْحَمْدُ لِلَّهِ" },
-  { id: "allahuakbar", text: "Allahu Akbar", meaning: "Allah is the Greatest", arabic: "اللَّهُ أَكْبَرُ" },
-  { id: "la-ilaha", text: "La ilaha illallah", meaning: "There is no god but Allah", arabic: "لَا إِلَاهَ إِلَّا اللَّهُ" }
-];
-
-/* ========== ADHKAR (Morning/Evening Remembrances) ========== */
-// TODO: Add verified morning and evening adhkar with proper sources
-const ADHKAR = {
-  morning: [],
-  evening: []
-};
-
-/* ========== EXPORT ========== */
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    PROGRAMMES,
-    EVENTS,
-    FIVE_PILLARS,
-    HADITH_DATA,
-    SCHOLASTIC_HUBS,
-    DHIKR_PHRASES,
-    ADHKAR
-  };
-}
