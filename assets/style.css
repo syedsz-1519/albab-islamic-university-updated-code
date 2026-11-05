@@ -589,10 +589,82 @@ section h2 {
 }
 
 /* ========== GRID (tiles/cards) ========== */
-.grid {
+.grid:not(.carousel) {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
+}
+
+/* ========== CAROUSEL ========== */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.carousel-wrapper::-webkit-scrollbar-track {
+  background: var(--line);
+  border-radius: 10px;
+}
+
+.carousel-wrapper::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.carousel-wrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dark);
+}
+
+.carousel {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 12px;
+}
+
+.carousel .card {
+  flex: 0 0 calc(50% - 8px);
+  min-width: 280px;
+}
+
+@media (max-width: 1024px) {
+  .carousel .card {
+    flex: 0 0 calc(50% - 8px);
+    min-width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel .card {
+    flex: 0 0 calc(70% - 8px);
+    min-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel .card {
+    flex: 0 0 85vw;
+    min-width: 85vw;
+  }
+  
+  .carousel-wrapper {
+    margin: 0 -22px;
+    padding: 0 22px;
+    width: calc(100% + 44px);
+  }
 }
 
 .card {

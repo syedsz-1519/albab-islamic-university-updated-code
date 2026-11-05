@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initFilters();
   initScrollAnimations();
+  initCarousel();
 });
 
 /* ========== PRELOADER ========== */
@@ -243,7 +244,7 @@ function setQueryParam(name, value) {
 
 /* ========== SCROLL ANIMATIONS ========== */
 function initScrollAnimations() {
-  const cards = document.querySelectorAll('.card, .grid > div');
+  const cards = document.querySelectorAll('.card, .carousel .card');
   
   if (!cards.length) return;
   
@@ -266,5 +267,39 @@ function initScrollAnimations() {
   
   cards.forEach(card => {
     observer.observe(card);
+  });
+}
+
+/* ========== CAROUSEL SMOOTH SCROLL ========== */
+function initCarousel() {
+  const carousels = document.querySelectorAll('.carousel-wrapper');
+  
+  carousels.forEach(carousel => {
+    // Add touch support for smooth swiping on mobile
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+    
+    carousel.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+    
+    carousel.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+    
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeft - walk;
+    });
   });
 }
