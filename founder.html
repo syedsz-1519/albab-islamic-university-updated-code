@@ -24,70 +24,87 @@
     
     .founder-image {
       position: relative;
+      overflow: hidden;
+      border-radius: 8px;
     }
     
     .founder-image img {
       width: 100%;
       height: auto;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
+      border-radius: 8px;
+      border: 2px solid var(--line);
+      filter: brightness(1.05) contrast(1.1) saturate(1.1);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+      transition: all 0.4s ease;
+      object-fit: cover;
     }
     
-    .founder-image-placeholder {
-      aspect-ratio: 3/4;
-      background: var(--line);
-      border-radius: var(--radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 14px;
-      text-align: center;
-      padding: 20px;
+    .founder-image:hover img {
+      transform: scale(1.02);
+      filter: brightness(1.1) contrast(1.15) saturate(1.15);
+      box-shadow: 0 16px 48px rgba(201, 162, 75, 0.2);
     }
     
+    .founder-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201, 162, 75, 0.1) 0%, transparent 50%, rgba(15, 61, 46, 0.05) 100%);
+      border-radius: 8px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+
     .founder-info h2 {
       margin-bottom: 4px;
+      font-size: clamp(28px, 5vw, 42px);
+      color: var(--ink);
     }
     
     .founder-title {
       font-size: 18px;
       color: var(--gold-dark);
       font-weight: 600;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
     
     .founder-bio {
       color: var(--muted);
       font-size: 16px;
       line-height: 1.8;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
     
     .social-links {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
     
     .social-link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 12px 16px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+      padding: 10px 14px;
+      border: 1.5px solid var(--gold);
+      border-radius: 20px;
       text-decoration: none;
-      color: var(--ink);
-      transition: all 0.2s;
+      color: var(--gold-dark);
+      transition: all 0.3s ease;
       font-weight: 600;
-      font-size: 14px;
+      font-size: 13px;
+      background: rgba(201, 162, 75, 0.05);
     }
     
     .social-link:hover {
-      border-color: var(--gold);
-      color: var(--gold-dark);
+      border-color: var(--gold-dark);
+      background: rgba(201, 162, 75, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(201, 162, 75, 0.15);
     }
     
     .section-divider {
@@ -117,28 +134,50 @@
     
     .area-card {
       background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 18px;
+      border: 1.5px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
       text-align: center;
-      transition: all 0.2s;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .area-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
     }
     
     .area-card:hover {
       border-color: var(--gold);
-      box-shadow: 0 4px 12px rgba(201, 162, 75, 0.1);
+      box-shadow: 0 8px 24px rgba(201, 162, 75, 0.12);
+      transform: translateY(-4px);
+    }
+    
+    .area-card:hover::before {
+      transform: scaleX(1);
     }
     
     .area-card h4 {
       font-size: 16px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: var(--ink);
+      font-weight: 700;
     }
     
     .area-card p {
       font-size: 13px;
       color: var(--muted);
       margin: 0;
+      line-height: 1.6;
     }
     
     .quote-block {

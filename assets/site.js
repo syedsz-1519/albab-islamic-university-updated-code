@@ -13,12 +13,19 @@ function initPreloader() {
   const preloader = document.getElementById('preloader');
   if (!preloader) return;
   
+  // Check if preloader has already been shown (stored in sessionStorage)
+  if (sessionStorage.getItem('preloaderShown')) {
+    preloader.style.display = 'none';
+    return;
+  }
+  
   const skipBtn = document.getElementById('skip-preloader');
   
   // Function to hide preloader
   function hidePreloader() {
     preloader.classList.add('hide');
     clearTimeout(preloaderTimer);
+    sessionStorage.setItem('preloaderShown', 'true');
     setTimeout(() => {
       preloader.style.pointerEvents = 'none';
     }, 500);
