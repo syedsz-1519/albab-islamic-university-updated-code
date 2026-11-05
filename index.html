@@ -1,27 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- ========== CRITICAL META TAGS ========== -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0f3d2e">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- ========== SEO & BRANDING ========== -->
+  <title>Albab Islamic University | Knowledge for people who think</title>
   <meta name="description" content="Albab Islamic University. A global institution dedicated to the preservation and active contextualization of sacred knowledge, bridging Usul al-Deen with neuroscience and clinical AI ethics.">
+  <meta name="keywords" content="Islamic University, Quran, Hadith, Fiqh, Islamic Sciences, Philosophy, Psychology, Logic, Deen">
+  <meta name="author" content="Adnan Al Farooq">
+  <meta name="theme-color" content="#0f3d2e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Albab University">
+  
+  <!-- ========== OPEN GRAPH (Facebook, LinkedIn, Pinterest) ========== -->
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="Albab Islamic University | Knowledge for people who think">
   <meta property="og:description" content="A global institution dedicated to the preservation and active contextualization of sacred knowledge, bridging Usul al-Deen with neuroscience and clinical AI ethics.">
-  <meta property="og:type" content="website">
   <meta property="og:url" content="https://albab-islamic-university-updated-code.vercel.app/">
-  <meta property="og:image" content="https://albab-islamic-university-updated-code.vercel.app/images/logo.png">
   <meta property="og:site_name" content="Albab Islamic University">
+  <meta property="og:image" content="https://albab-islamic-university-updated-code.vercel.app/images/logo-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  
+  <!-- ========== TWITTER CARD ========== -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Albab Islamic University | Knowledge for people who think">
   <meta name="twitter:description" content="A global institution dedicated to the preservation and active contextualization of sacred knowledge.">
-  <meta name="twitter:image" content="https://albab-islamic-university-updated-code.vercel.app/images/logo.png">
+  <meta name="twitter:image" content="https://albab-islamic-university-updated-code.vercel.app/images/logo-1200x630.png">
+  <meta name="twitter:image:alt" content="Albab Islamic University Logo">
+  <meta name="twitter:site" content="@albabuniversity">
+  <meta name="twitter:creator" content="@adnanalfarooq">
+  
+  <!-- ========== CANONICAL & LINKS ========== -->
   <link rel="canonical" href="https://albab-islamic-university-updated-code.vercel.app/">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 32'%3E%3Cpath d='M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z' stroke='%23c9a24b' stroke-width='2' fill='none'/%3E%3C/svg%3E" type="image/svg+xml">
+  <link rel="alternate" hreflang="en" href="https://albab-islamic-university-updated-code.vercel.app/">
+  
+  <!-- ========== ICONS & FAVICONS ========== -->
+  <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon-180x180.png" sizes="180x180">
+  <link rel="manifest" href="/manifest.json">
+  
+  <!-- ========== PRECONNECT & DNS PREFETCH ========== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://albab-islamic-university-updated-code.vercel.app">
+  
+  <!-- ========== STYLESHEET ========== -->
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
-  <title>Albab Islamic University | Knowledge for people who think</title>
+  
+  <!-- ========== PWA SERVICE WORKER REGISTRATION ========== -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+          .then(registration => {
+            console.log('✓ Service Worker registered successfully!', registration.scope);
+          })
+          .catch(error => {
+            console.warn('✗ Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
 </head>
 <body>
 
