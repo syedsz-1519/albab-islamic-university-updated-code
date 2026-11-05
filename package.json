@@ -2,16 +2,5 @@
   "name": "albab-islamic-university",
   "version": "1.0.0",
   "description": "Multi-page static website for Albab Islamic University",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "node build.js",
-    "preview": "vite preview"
-  },
-  "keywords": ["islamic", "education", "university"],
-  "author": "Albab Islamic University",
-  "license": "MIT",
-  "devDependencies": {
-    "vite": "^5.0.0"
-  }
+  "private": true
 }
