@@ -150,6 +150,13 @@ header .wrap {
   flex-shrink: 0;
 }
 
+.logo-img {
+  width: 48px;
+  height: 56px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
 .brand-text {
   display: flex;
   flex-direction: column;
