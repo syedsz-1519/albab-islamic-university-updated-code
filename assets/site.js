@@ -29,8 +29,8 @@ function initPreloader() {
     skipBtn.addEventListener('click', hidePreloader);
   }
   
-  // Show preloader for 5 seconds (5000ms)
-  const preloaderTimer = setTimeout(hidePreloader, 5000);
+  // Show preloader for 3 seconds (3000ms)
+  const preloaderTimer = setTimeout(hidePreloader, 3000);
 }
 
 /* ========== MOBILE MENU TOGGLE ========== */
