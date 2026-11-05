@@ -1985,3 +1985,95 @@ blockquote {
     page-break-inside: avoid;
   }
 }
+
+/* ========== DHIKR TIMER OPTIONS ========== */
+.dhikr-timers {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.timer-option {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.timer-option:hover {
+  border-color: var(--gold);
+  color: var(--gold-dark);
+}
+
+.timer-option.active {
+  background: var(--gold);
+  color: #1b1608;
+  border-color: var(--gold);
+}
+
+.dhikr-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.dhikr-card {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-top: 2px solid var(--gold);
+}
+
+.dhikr-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(201, 162, 75, 0.15);
+}
+
+.dhikr-card:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+.dhikr-phrase {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  direction: rtl;
+  line-height: 1.8;
+}
+
+.dhikr-transliteration {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.dhikr-count {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 8px 0;
+  font-family: monospace;
+}
+
+.dhikr-meaning {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.5;
+}
