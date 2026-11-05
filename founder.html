@@ -203,8 +203,14 @@
     }
     
     .talks-list li {
-      padding: 14px 0;
+      padding: 16px 0;
       border-bottom: 1px solid var(--line);
+      transition: all 0.3s ease;
+    }
+    
+    .talks-list li:hover {
+      padding-left: 12px;
+      border-bottom-color: var(--gold);
     }
     
     .talks-list li:last-child {
@@ -212,28 +218,36 @@
     }
     
     .talk-title {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--ink);
       display: block;
       margin-bottom: 4px;
+      font-size: 15px;
     }
     
     .talk-meta {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--muted);
     }
     
     .cta-section {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 24px;
+      background: linear-gradient(135deg, var(--surface) 0%, rgba(201, 162, 75, 0.05) 100%);
+      border: 1.5px solid var(--line);
+      border-radius: 8px;
+      padding: 32px;
       text-align: center;
-      margin-top: 32px;
+      margin-top: 40px;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-section:hover {
+      border-color: var(--gold);
+      box-shadow: 0 12px 32px rgba(201, 162, 75, 0.15);
     }
     
     .cta-section h3 {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      color: var(--ink);
     }
     
     .cta-section p {
