@@ -4,358 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0f3d2e">
-  <meta name="description" content="Explore Labs: Interactive modules for Islamic learning including hadith library, five pillars, dhikr timer, and scholarly tools.">
-  <meta property="og:title" content="Explore Labs | Albab Islamic University">
+  <meta name="description" content="Explore interactive modules: hadith library, five pillars, dhikr checklist, celestial globe, quiz, and more coming soon.">
+  <meta property="og:title" content="Explore | Albab Islamic University">
+  <meta property="og:description" content="Interactive learning modules on Islamic sciences, spirituality, and classical scholarship.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://al-bab-university.vercel.app/explore">
+  <meta name="twitter:card" content="summary">
   <link rel="canonical" href="https://al-bab-university.vercel.app/explore">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 32'%3E%3Cpath d='M14 2c-6 4-9 8-9 14v14h18V16c0-6-3-10-9-14Z' stroke='%23c9a24b' stroke-width='2' fill='none'/%3E%3C/svg%3E" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/style.css">
-  <style>
-    .lab-row {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      margin-bottom: 16px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 22px;
-      align-items: center;
-      transition: all 0.2s;
-    }
-    
-    .lab-row:hover {
-      border-color: var(--gold);
-      box-shadow: 0 4px 12px rgba(201, 162, 75, 0.1);
-    }
-    
-    .lab-content h3 {
-      margin-bottom: 4px;
-      font-size: 20px;
-    }
-    
-    .lab-arabic {
-      font-family: Amiri, serif;
-      font-size: 16px;
-      color: var(--gold-dark);
-      direction: rtl;
-      text-align: right;
-      margin-bottom: 8px;
-    }
-    
-    .lab-summary {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 12px;
-    }
-    
-    .lab-tags {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    
-    .lab-tag {
-      display: inline-block;
-      padding: 4px 10px;
-      background: var(--line);
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 600;
-      border-radius: 3px;
-    }
-    
-    .lab-status {
-      text-align: right;
-    }
-    
-    .lab-status.live {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    
-    .lab-status.coming-soon {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 8px;
-    }
-    
-    .status-badge {
-      display: inline-block;
-      padding: 6px 12px;
-      border-radius: 3px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-    
-    .status-badge.live {
-      background: rgba(201, 162, 75, 0.1);
-      color: var(--gold-dark);
-      border: 1px solid var(--gold);
-    }
-    
-    .status-badge.coming {
-      background: rgba(77, 95, 86, 0.1);
-      color: var(--muted);
-      border: 1px solid var(--line);
-    }
-    
-    .category-filter {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-    
-    .filter-chip {
-      padding: 8px 14px;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: var(--surface);
-      color: var(--ink);
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    
-    .filter-chip:hover {
-      border-color: var(--gold);
-      color: var(--gold-dark);
-    }
-    
-    .filter-chip.active {
-      background: var(--gold);
-      color: #1b1608;
-      border-color: var(--gold);
-    }
-    
-    .search-box {
-      margin-bottom: 24px;
-    }
-    
-    .search-input {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      font-size: 15px;
-      font-family: var(--font-sans);
-      background: var(--surface);
-      color: var(--ink);
-    }
-    
-    .search-input:focus {
-      outline: none;
-      border-color: var(--gold);
-    }
-    
-    /* ========== FIVE PILLARS SECTION ========== */
-    .pillar-tab-content {
-      display: none;
-    }
-    
-    .pillar-tab-content.active {
-      display: block;
-    }
-    
-    .pillar-panel {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      margin-top: 20px;
-    }
-    
-    .pillar-panel h3 {
-      font-size: 24px;
-      margin-bottom: 4px;
-    }
-    
-    .pillar-panel .arabic {
-      font-family: Amiri, serif;
-      font-size: 18px;
-      color: var(--gold-dark);
-      margin-bottom: 18px;
-    }
-    
-    .pillar-section {
-      margin-bottom: 18px;
-    }
-    
-    .pillar-section strong {
-      display: block;
-      font-size: 15px;
-      color: var(--gold-dark);
-      margin-bottom: 6px;
-      font-family: var(--font-serif);
-    }
-    
-    .pillar-section p {
-      color: var(--ink);
-      line-height: 1.7;
-      margin: 0;
-    }
-    
-    /* ========== DHIKR SECTION ========== */
-    .dhikr-container {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 28px;
-      max-width: 500px;
-      margin: 24px auto;
-    }
-    
-    .timer-display {
-      font-size: 48px;
-      font-weight: 700;
-      text-align: center;
-      color: var(--gold-dark);
-      margin-bottom: 22px;
-      font-family: var(--font-serif);
-    }
-    
-    .dhikr-card {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 16px;
-      margin-bottom: 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: center;
-    }
-    
-    .dhikr-card:hover {
-      border-color: var(--gold);
-      background: rgba(201, 162, 75, 0.05);
-    }
-    
-    .dhikr-card strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
-    
-    .dhikr-card .arabic {
-      font-family: Amiri, serif;
-      font-size: 16px;
-      color: var(--gold-dark);
-      margin-bottom: 6px;
-    }
-    
-    .dhikr-card .count {
-      font-size: 14px;
-      color: var(--muted);
-    }
-    
-    /* ========== GLOBE SECTION ========== */
-    .globe-container {
-      margin: 24px 0;
-    }
-    
-    .hub-card {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      margin-bottom: 16px;
-    }
-    
-    .hub-card h3 {
-      font-size: 20px;
-      margin-bottom: 4px;
-    }
-    
-    .hub-card .region {
-      color: var(--gold-dark);
-      font-weight: 600;
-      margin-bottom: 12px;
-      display: block;
-    }
-    
-    .hub-facts {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    
-    .hub-facts li {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
-      margin-bottom: 10px;
-      padding-left: 16px;
-      position: relative;
-    }
-    
-    .hub-facts li::before {
-      content: "◆";
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-      font-size: 12px;
-    }
-    
-    /* ========== QUIZ SECTION ========== */
-    .quiz-question {
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      margin-bottom: 20px;
-    }
-    
-    .quiz-question h3 {
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
-    
-    .quiz-question .arabic {
-      font-family: Amiri, serif;
-      color: var(--gold-dark);
-      margin-bottom: 16px;
-      direction: rtl;
-      text-align: right;
-    }
-    
-    .quiz-options {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 16px 0;
-    }
-    
-    .quiz-options li {
-      margin-bottom: 8px;
-    }
-    
-    .quiz-option {
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--bg);
-      cursor: pointer;
-      transition: all 0.2s;
-      font-size: 14px;
-    }
-    
-    .quiz-option:hover {
-      border-color: var(--gold);
-      background: rgba(201, 162, 75, 0.05);
-    }
-    
-    .quiz-option.selected {
-      background: var(--gold);
-      color: #1b1608;
-      border-color: var(--gold);
-    }
-  </style>
-  <title>Explore Labs | Albab Islamic University</title>
+  <title>Explore Interactive Modules | Albab Islamic University</title>
 </head>
 <body>
 
@@ -380,310 +41,422 @@
 
 <main>
 
-<!-- ========== PAGE HEADER ========== -->
+<!-- HERO BAND -->
 <div class="page-header">
   <div class="wrap">
-    <h1>Explore Labs</h1>
-    <p class="subtitle">Interactive modules for Islamic learning: live tools and coming soon initiatives.</p>
+    <h1>Explore interactive modules</h1>
+    <p class="lead">Learn through engaging, hands-on tools and resources</p>
   </div>
 </div>
 
-<!-- ========== LABS SECTION ========== -->
-<section style="padding: 56px 0;">
+<!-- CONTENT SECTION -->
+<section class="content-section">
   <div class="wrap">
-    <div class="search-box">
-      <input type="text" id="labSearch" placeholder="Search labs by name or topic..." class="search-input">
+
+    <!-- FILTERS & SEARCH -->
+    <div style="margin-bottom: 32px;">
+      <label for="labs-search" style="display: block; margin-bottom: 12px; font-weight: 600;">Search modules</label>
+      <input type="text" id="labs-search" placeholder="Search by title, topic, or Arabic name..." style="width: 100%; max-width: 500px; padding: 12px; border: 1px solid var(--line); border-radius: 4px; font: 16px var(--font-body); background: var(--surface); color: var(--ink); margin-bottom: 20px;">
+
+      <label style="display: block; margin-bottom: 10px; font-weight: 600;">Filter by category</label>
+      <div class="category-filters">
+        <!-- Generated by JS -->
+      </div>
     </div>
-    
-    <div class="category-filter" id="categoryFilter"></div>
-    
-    <div id="labsGrid"></div>
-  </div>
-</section>
 
-<!-- ========== FIVE PILLARS ========== -->
-<section id="pillars" style="background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 56px 0;">
-  <div class="wrap">
-    <h2>Five Pillars of Islam</h2>
-    <p class="section-lead">The foundational practices of Islamic faith and practice.</p>
-    
-    <div class="tabs" style="margin-bottom: 0;">
-      <button class="tab-btn active" data-pillar="shahadah" onclick="switchPillar(event)">Shahadah</button>
-      <button class="tab-btn" data-pillar="salah" onclick="switchPillar(event)">Salah</button>
-      <button class="tab-btn" data-pillar="zakat" onclick="switchPillar(event)">Zakat</button>
-      <button class="tab-btn" data-pillar="sawm" onclick="switchPillar(event)">Sawm</button>
-      <button class="tab-btn" data-pillar="hajj" onclick="switchPillar(event)">Hajj</button>
+    <!-- LABS GRID -->
+    <div id="labs-grid" class="labs-grid">
+      <!-- Generated by JS -->
     </div>
-    
-    <div id="pillarContent"></div>
+
+    <!-- NO RESULTS -->
+    <div id="no-results" style="display: none; text-align: center; padding: 48px 0; color: var(--muted);">
+      <p style="font-size: 18px;">No modules match your search. Try adjusting your filters.</p>
+    </div>
+
   </div>
 </section>
 
-<!-- ========== DHIKR CHECKLIST ========== -->
-<section id="dhikr" style="padding: 56px 0;">
+<!-- FIVE PILLARS SECTION (hidden by default, shown via #pillars anchor) -->
+<section id="pillars" style="scroll-margin-top: 80px;">
   <div class="wrap">
-    <h2 style="text-align: center;">Dhikr Checklist</h2>
-    <p class="section-lead" style="text-align: center;">Daily remembrances. Tap each to count. <em style="color: var(--muted);">"Indeed, in the remembrance of Allah do hearts find rest."</em> (Surah Ar-Ra'd 13:28)</p>
-    
-    <div class="dhikr-container" id="dhikrContainer"></div>
+    <h2 style="margin-top: 0;">Five Pillars Foundation</h2>
+    <p class="section-lead">The core practices of Islam.</p>
+
+    <!-- Pillar Tabs -->
+    <div role="tablist" class="tabs-nav" aria-label="Five Pillars">
+      <button role="tab" aria-selected="true" aria-controls="pillar-shahadah" id="btn-shahadah" class="tab-btn active">Shahadah</button>
+      <button role="tab" aria-selected="false" aria-controls="pillar-salah" id="btn-salah" class="tab-btn">Salah</button>
+      <button role="tab" aria-selected="false" aria-controls="pillar-zakat" id="btn-zakat" class="tab-btn">Zakat</button>
+      <button role="tab" aria-selected="false" aria-controls="pillar-sawm" id="btn-sawm" class="tab-btn">Sawm</button>
+      <button role="tab" aria-selected="false" aria-controls="pillar-hajj" id="btn-hajj" class="tab-btn">Hajj</button>
+    </div>
+
+    <!-- Shahadah -->
+    <div role="tabpanel" id="pillar-shahadah" aria-labelledby="btn-shahadah" class="pillar-panel active">
+      <h3>ٱلشَّهَادَةُ — The Testimony of Faith</h3>
+      <div style="border-top: 2px solid var(--gold); padding-top: 16px; margin-top: 16px;">
+        <h4>The rules and conditions</h4>
+        <p>To declare: "There is no deity except Allah, and Muhammad is the Messenger of Allah." This declaration must be made with sincere heart, belief, and full understanding.</p>
+
+        <h4 style="margin-top: 16px;">The practical steps</h4>
+        <p>Speak the testimony with full conviction. In Islam, reciting the shahada with genuine belief and intention is the formal entry into the faith.</p>
+
+        <h4 style="margin-top: 16px;">Spiritual significance</h4>
+        <p>The shahada is the foundation of all Islamic belief. It affirms absolute monotheism and recognition of Muhammad's prophethood.</p>
+
+        <h4 style="margin-top: 16px;">Scripture proof</h4>
+        <p><em>"There is no deity except Allah"</em> — Qur'an 47:19</p>
+      </div>
+    </div>
+
+    <!-- Salah -->
+    <div role="tabpanel" id="pillar-salah" aria-labelledby="btn-salah" class="pillar-panel">
+      <h3>ٱلصَّلَاةُ — The Prayer</h3>
+      <div style="border-top: 2px solid var(--gold); padding-top: 16px; margin-top: 16px;">
+        <h4>The rules and conditions</h4>
+        <p>Five daily prayers: <strong>Fajr</strong> (dawn, before sunrise), <strong>Dhuhr</strong> (just after noon), <strong>Asr</strong> (late afternoon), <strong>Maghrib</strong> (immediately after sunset), <strong>Isha</strong> (dark night). Each prayer requires ritual purity (wudu), facing the Qibla (Mecca), and specific movements.</p>
+
+        <h4 style="margin-top: 16px;">The practical steps</h4>
+        <ol style="margin-left: 20px;">
+          <li>Perform wudu (ritual ablution)</li>
+          <li>Stand facing the Qibla</li>
+          <li>Make the intention (niyyah)</li>
+          <li>Perform the prescribed postures: standing, bowing, prostration, sitting</li>
+          <li>Complete with the taslim (greeting of peace)</li>
+        </ol>
+
+        <h4 style="margin-top: 16px;">Spiritual significance</h4>
+        <p>Prayer is a direct connection to Allah, a moment of reflection, and a foundation for righteous living. It disciplines the soul and reminds believers of their purpose.</p>
+      </div>
+    </div>
+
+    <!-- Zakat -->
+    <div role="tabpanel" id="pillar-zakat" aria-labelledby="btn-zakat" class="pillar-panel">
+      <h3>ٱلزَّكَاةُ — The Purifying Alms</h3>
+      <div style="border-top: 2px solid var(--gold); padding-top: 16px; margin-top: 16px;">
+        <h4>The rules and conditions</h4>
+        <p><strong>2.5% of eligible wealth</strong> held for a full lunar year above the <strong>Nisab</strong>:</p>
+        <ul style="margin-left: 20px;">
+          <li><strong>Gold:</strong> 87.48 grams (approximately 3 ounces)</li>
+          <li><strong>Silver:</strong> 612.36 grams (approximately 22 ounces)</li>
+        </ul>
+        <p>Zakat purifies wealth and spirit, supporting the poor and vulnerable.</p>
+
+        <h4 style="margin-top: 16px;">The practical steps</h4>
+        <ol style="margin-left: 20px;">
+          <li>Calculate eligible wealth (cash, gold, silver, investments)</li>
+          <li>Determine the nisab threshold in your currency</li>
+          <li>Pay 2.5% of qualifying wealth</li>
+          <li>Distribute to eligible recipients (the poor, needy, debtors, travelers, etc.)</li>
+        </ol>
+
+        <h4 style="margin-top: 16px;">Spiritual significance</h4>
+        <p>Zakat is a pillar of social justice, fostering compassion and equity within the community.</p>
+      </div>
+    </div>
+
+    <!-- Sawm -->
+    <div role="tabpanel" id="pillar-sawm" aria-labelledby="btn-sawm" class="pillar-panel">
+      <h3>ٱلصَّوْمُ — The Fasting</h3>
+      <div style="border-top: 2px solid var(--gold); padding-top: 16px; margin-top: 16px;">
+        <h4>The rules and conditions</h4>
+        <p><strong>During Ramadan:</strong> Abstain from food, drink, and intimate relations from dawn (Fajr) to sunset (Maghrib).</p>
+        <p><strong>Exemptions:</strong> Children, travelers, the sick, the elderly, pregnant or menstruating women, and those with legitimate hardship.</p>
+
+        <h4 style="margin-top: 16px;">The practical steps</h4>
+        <ol style="margin-left: 20px;">
+          <li>Make the intention (niyyah) to fast before Fajr</li>
+          <li>Abstain from food and drink</li>
+          <li>Maintain moral discipline and avoid arguments</li>
+          <li>Break the fast (iftar) at sunset with dates and water, traditionally</li>
+          <li>Make up missed fasts after Ramadan if needed</li>
+        </ol>
+
+        <h4 style="margin-top: 16px;">Spiritual significance</h4>
+        <p>Fasting develops self-control, empathy for the poor, and spiritual focus. It is a month of heightened awareness and divine closeness.</p>
+
+        <h4 style="margin-top: 16px;">Scripture proof</h4>
+        <p><em>"O you who believe, fasting is prescribed for you as it was prescribed for those before you, that you might become conscious of Allah."</em> — Qur'an 2:183</p>
+      </div>
+    </div>
+
+    <!-- Hajj -->
+    <div role="tabpanel" id="pillar-hajj" aria-labelledby="btn-hajj" class="pillar-panel">
+      <h3>ٱلْحَجُّ — The Pilgrimage</h3>
+      <div style="border-top: 2px solid var(--gold); padding-top: 16px; margin-top: 16px;">
+        <h4>The rules and conditions</h4>
+        <p><strong>Once in a lifetime</strong> for those with health, finances, and means. Performed during <strong>Dhul-Hijjah</strong> (the 12th Islamic month).</p>
+        <p>Requirements: physical fitness, financial capacity, and safe passage.</p>
+
+        <h4 style="margin-top: 16px;">The practical steps</h4>
+        <ol style="margin-left: 20px;">
+          <li>Enter Ihram (sacred pilgrimage state) with intention</li>
+          <li>Perform Tawaf (seven circuits around the Kaaba)</li>
+          <li>Walk between Safa and Marwa (Sa'y) seven times</li>
+          <li>Stand at Arafat for spiritual reflection</li>
+          <li>Pelt pebbles at the Jamarat (symbolic stoning of evil)</li>
+          <li>Perform the farewell Tawaf before departure</li>
+        </ol>
+
+        <h4 style="margin-top: 16px;">Spiritual significance</h4>
+        <p>Hajj is the physical and spiritual culmination of Islamic practice. Pilgrims from around the world unite in worship, experiencing profound spiritual transformation and global Islamic unity.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ========== CELESTIAL GLOBE ========== -->
-<section id="globe" style="background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 56px 0;">
+<!-- DHIKR SECTION (hidden by default, shown via #dhikr anchor) -->
+<section id="dhikr" style="scroll-margin-top: 80px; margin-top: 48px;">
   <div class="wrap">
-    <h2>Celestial Globe</h2>
-    <p class="section-lead">Six scholastic hubs of Islamic learning throughout history.</p>
-    <div class="globe-container" id="globeContainer"></div>
+    <h2 style="margin-top: 0;">Dhikr Checklist</h2>
+    <p class="section-lead">Remember Allah with this interactive counter.</p>
+
+    <div style="max-width: 600px;">
+      <div style="background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 24px; margin-bottom: 24px;">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <div id="dhikr-timer" style="font-size: 32px; font-weight: 700; color: var(--gold); font-family: monospace;">1:00</div>
+          <button id="dhikr-start" style="margin-top: 12px; padding: 8px 16px; background: var(--gold); color: var(--green-dark); border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">Start</button>
+        </div>
+      </div>
+
+      <div class="dhikr-cards">
+        <!-- Generated by JS -->
+      </div>
+
+      <blockquote style="border-left: 4px solid var(--gold); padding-left: 16px; color: var(--muted); font-style: italic; margin-top: 24px;">
+        <p>"Whoever remembers their Lord and whoever forgets, their Lord will remind them."</p>
+        <p style="font-size: 14px;">— Qur'an 13:28</p>
+      </blockquote>
+    </div>
   </div>
 </section>
 
-<!-- ========== INTERACTIVE QUIZ ========== -->
-<section id="quiz" style="padding: 56px 0;">
+<!-- CELESTIAL GLOBE SECTION (placeholder) -->
+<section id="globe" style="scroll-margin-top: 80px; margin-top: 48px;">
   <div class="wrap">
-    <h2>Interactive Quiz</h2>
-    <p class="section-lead">Test your knowledge on Islamic topics and teachings.</p>
-    <div id="quizContainer"></div>
+    <h2 style="margin-top: 0;">Celestial Globe</h2>
+    <p class="section-lead">Explore six great scholastic hubs of Islamic history.</p>
+    <p style="color: var(--muted); text-align: center; padding: 48px 0;">
+      <em>Interactive globe coming soon. Explore Medina, Bukhara, Baghdad, Cairo, Fez, and Cordoba.</em>
+    </p>
+  </div>
+</section>
+
+<!-- QUIZ SECTION (placeholder) -->
+<section id="quiz" style="scroll-margin-top: 80px; margin-top: 48px;">
+  <div class="wrap">
+    <h2 style="margin-top: 0;">Interactive Quiz</h2>
+    <p class="section-lead">Test your knowledge on Islamic sciences.</p>
+    <p style="color: var(--muted); text-align: center; padding: 48px 0;">
+      <em>Interactive quiz coming soon. Questions on hadith, Quranic sciences, fiqh, and Islamic history.</em>
+    </p>
   </div>
 </section>
 
 </main>
 
-<!-- ========== FOOTER ========== -->
 <footer>
   <div class="wrap">
-    <div>
-      <h4>Explore Labs</h4>
-      <p style="color: #d7e0d6; font-size: 15px; margin: 0;">Interactive Islamic learning modules.</p>
+    <p><strong>Albab Islamic University</strong> — Knowledge for people who think.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; margin: 32px 0;">
+      <div>
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/programmes">Programmes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Founder & Director: Adnan Al Farooq</p>
+        <p><a href="tel:+917051913270">+91 7051913270</a></p>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <p><a href="https://instagram.com/albabuniversity" target="_blank" rel="noopener">Instagram: @albabuniversity</a></p>
+        <p><a href="https://instagram.com/adnanalfarooq" target="_blank" rel="noopener">Founder: @adnanalfarooq</a></p>
+      </div>
     </div>
-    <div>
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/hadith">Hadith Library</a></li>
-        <li><a href="/programmes">Programmes</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Connect</h4>
-      <ul>
-        <li><a href="https://www.instagram.com/albabuniversity" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2024–2026 Albab Islamic University. All rights reserved. Designed for Ulul Albab.</p>
+    <p style="border-top: 1px solid var(--line); padding-top: 16px; margin-top: 32px; font-size: 14px; color: var(--muted);">
+      © 2024–2026 Albab Islamic University. All rights reserved. Designed for Ulul Albab.
+    </p>
   </div>
 </footer>
 
 <script type="module" src="/assets/labs-data.js"></script>
 <script type="module" src="/assets/site.js"></script>
-<script>
-// Render labs grid
-function renderLabs(filter = 'all', search = '') {
-  let filtered = LABS;
-  
-  if (filter !== 'all') {
-    filtered = filtered.filter(l => l.category === filter);
-  }
-  
-  if (search) {
-    const q = search.toLowerCase();
-    filtered = filtered.filter(l => 
-      l.title.toLowerCase().includes(q) || 
-      l.summary.toLowerCase().includes(q) ||
-      l.tags.some(t => t.toLowerCase().includes(q))
-    );
-  }
-  
-  const grid = document.getElementById('labsGrid');
-  const html = filtered.map(lab => `
-    <div class="lab-row animate-in">
-      <div class="lab-content">
-        <h3>${lab.title}</h3>
-        <div class="lab-arabic">${lab.arabic}</div>
-        <p class="lab-summary">${lab.summary}</p>
-        <div class="lab-tags">
-          ${lab.tags.map(tag => `<span class="lab-tag">${tag}</span>`).join('')}
-        </div>
-      </div>
-      <div class="lab-status ${lab.status}">
-        <span class="status-badge ${lab.status === 'live' ? 'live' : 'coming'}">
-          ${lab.status === 'live' ? '✓ Live' : '⏳ Coming soon'}
-        </span>
-        ${lab.status === 'live' ? 
-          `<a href="${lab.link}" class="btn sm primary" style="margin-top: 8px;">Open</a>` :
-          `<a href="${lab.link}" class="btn sm tertiary" style="margin-top: 8px;">Notify me</a>`
-        }
-      </div>
-    </div>
+<script type="module">
+import { LABS_DATA } from '/assets/labs-data.js';
+
+// Render category filters
+function renderCategoryFilters() {
+  const filters = document.querySelector('.category-filters');
+  const categories = ['All', ...LABS_DATA.categories];
+  filters.innerHTML = categories.map(cat => `
+    <button class="category-filter ${cat === 'All' ? 'active' : ''}" data-category="${cat === 'All' ? '' : cat}">${cat}</button>
   `).join('');
-  
-  grid.innerHTML = html || '<p style="color: var(--muted); text-align: center; padding: 40px;">No labs found.</p>';
+
+  document.querySelectorAll('.category-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.category-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderLabs();
+    });
+  });
 }
 
-// Setup filters
-function setupFilters() {
-  const container = document.getElementById('categoryFilter');
-  const html = LAB_CATEGORIES.map(cat => `
-    <button class="filter-chip ${cat.id === 'all' ? 'active' : ''}" 
-            onclick="filterLabs('${cat.id}')">
-      ${cat.label} (${cat.count})
+// Render labs grid
+function renderLabs() {
+  const grid = document.getElementById('labs-grid');
+  const noResults = document.getElementById('no-results');
+  
+  const activeCategory = document.querySelector('.category-filter.active').dataset.category || '';
+  const searchQuery = document.getElementById('labs-search').value;
+  
+  const results = LABS_DATA.filterAndSearch(activeCategory || 'All', searchQuery);
+
+  if (results.length === 0) {
+    grid.style.display = 'none';
+    noResults.style.display = 'block';
+    return;
+  }
+
+  grid.style.display = 'grid';
+  noResults.style.display = 'none';
+  
+  grid.innerHTML = results.map(lab => `
+    <div class="lab-card ${lab.status}">
+      <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+        <h3 style="margin: 0; font-size: 18px;">${lab.englishTitle}</h3>
+        <span class="lab-status-badge ${lab.status}">${lab.status === 'live' ? '✓ Live' : 'Coming soon'}</span>
+      </div>
+      <div style="font-size: 14px; color: var(--gold); margin-bottom: 8px; font-family: var(--font-serif);">${lab.arabicTitle}</div>
+      <p style="color: var(--muted); margin: 12px 0; font-size: 15px;">${lab.summary}</p>
+      <div style="margin: 12px 0; display: flex; gap: 8px; flex-wrap: wrap;">
+        ${lab.tags.map(tag => `<span class="lab-tag">${tag}</span>`).join('')}
+      </div>
+      ${lab.status === 'live' 
+        ? `<a href="${lab.link}" class="btn secondary" style="display: inline-block; margin-top: 12px;">Explore</a>`
+        : `<a href="/contact.html?subject=${encodeURIComponent('Notify: ' + lab.englishTitle)}" class="btn secondary" style="display: inline-block; margin-top: 12px;">Notify me</a>`
+      }
+    </div>
+  `).join('');
+}
+
+// Tab switching for pillars
+document.querySelectorAll('[role="tab"]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (btn.id.startsWith('btn-pillar') || btn.id.startsWith('btn-')) {
+      document.querySelectorAll('[role="tabpanel"]').forEach(p => {
+        if (p.id.startsWith('pillar-')) p.classList.remove('active');
+      });
+      document.querySelectorAll('[role="tab"]').forEach(b => {
+        if (b.id.startsWith('btn-')) {
+          b.setAttribute('aria-selected', 'false');
+          b.classList.remove('active');
+        }
+      });
+      
+      const panelId = btn.getAttribute('aria-controls');
+      if (document.getElementById(panelId)) {
+        document.getElementById(panelId).classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        btn.classList.add('active');
+      }
+    }
+  });
+});
+
+// Dhikr counter
+const dhikrCards = [
+  { phrase: 'سُبْحَانَ اللَّهِ', transliteration: 'SubhanAllah', meaning: 'Glory be to Allah' },
+  { phrase: 'الْحَمْدُ لِلَّهِ', transliteration: 'Alhamdulillah', meaning: 'All praise to Allah' },
+  { phrase: 'اللَّهُ أَكْبَرُ', transliteration: 'Allahu Akbar', meaning: 'Allah is the Greatest' },
+  { phrase: 'لَا إِلَهَ إِلَّا اللَّهُ', transliteration: 'La ilaha illallah', meaning: 'There is no deity except Allah' }
+];
+
+function renderDhikrCards() {
+  const container = document.querySelector('.dhikr-cards');
+  container.innerHTML = dhikrCards.map((card, i) => `
+    <button class="dhikr-card" data-index="${i}">
+      <div class="dhikr-phrase">${card.phrase}</div>
+      <div class="dhikr-transliteration">${card.transliteration}</div>
+      <div class="dhikr-count">0</div>
+      <div class="dhikr-meaning">${card.meaning}</div>
     </button>
   `).join('');
-  container.innerHTML = html;
-}
 
-function filterLabs(category) {
-  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
-  event.target.classList.add('active');
-  renderLabs(category === 'all' ? 'all' : category);
-}
+  // Load counts from localStorage
+  dhikrCards.forEach((_, i) => {
+    try {
+      const stored = localStorage.getItem(`dhikr-${i}`);
+      if (stored) {
+        document.querySelector(`[data-index="${i}"] .dhikr-count`).textContent = stored;
+      }
+    } catch (e) {
+      // localStorage not available
+    }
+  });
 
-// Setup search
-function setupSearch() {
-  const input = document.getElementById('labSearch');
-  if (input) {
-    input.addEventListener('input', (e) => {
-      renderLabs('all', e.target.value);
+  // Click handlers
+  document.querySelectorAll('.dhikr-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const i = card.dataset.index;
+      const countEl = card.querySelector('.dhikr-count');
+      let count = parseInt(countEl.textContent) || 0;
+      count++;
+      countEl.textContent = count;
+      try {
+        localStorage.setItem(`dhikr-${i}`, count);
+      } catch (e) {
+        // localStorage not available
+      }
     });
-  }
+  });
 }
 
-// Render five pillars
-function renderPillars() {
-  const container = document.getElementById('pillarContent');
-  
-  const pillarHTML = FIVE_PILLARS_EXPLORE.map(p => `
-    <div class="pillar-tab-content pillar-${p.name.toLowerCase()}">
-      <div class="pillar-panel">
-        <h3>${p.name}</h3>
-        <div class="arabic">${p.arabic}</div>
-        
-        <div class="pillar-section">
-          <strong>The rules and conditions</strong>
-          <p>${p.rules}</p>
-        </div>
-        
-        <div class="pillar-section">
-          <strong>The practical steps</strong>
-          <p>${p.steps}</p>
-        </div>
-        
-        <div class="pillar-section">
-          <strong>Spiritual significance</strong>
-          <p>${p.significance}</p>
-        </div>
-        
-        <div class="pillar-section">
-          <strong>Quranic proof</strong>
-          <p><em>${p.proof}</em></p>
-        </div>
-      </div>
-    </div>
-  `).join('');
-  
-  container.innerHTML = pillarHTML;
-  switchPillar({ target: { getAttribute: () => 'shahadah' } });
-}
+// Timer
+let timerRunning = false;
+let timeLeft = 60;
+const timerDisplay = document.getElementById('dhikr-timer');
+const startBtn = document.getElementById('dhikr-start');
 
-function switchPillar(e) {
-  const pillar = e.target.getAttribute('data-pillar') || 'shahadah';
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.pillar-tab-content').forEach(c => c.classList.remove('active'));
-  e.target.classList.add('active');
-  document.querySelector(`.pillar-${pillar}`).classList.add('active');
-}
+startBtn.addEventListener('click', () => {
+  if (timerRunning) return;
+  timerRunning = true;
+  startBtn.textContent = 'Running...';
+  startBtn.disabled = true;
+  timeLeft = 60;
 
-// Render dhikr cards
-function renderDhikr() {
-  const container = document.getElementById('dhikrContainer');
-  const html = DHIKR_SESSION.map(d => `
-    <div class="dhikr-card" onclick="incrementDhikr('${d.id}', this)">
-      <strong>${d.text}</strong>
-      <div class="arabic">${d.arabic}</div>
-      <div style="color: var(--muted); font-size: 13px; margin-bottom: 6px;">${d.meaning}</div>
-      <div class="count" data-count="0">Count: <span>0</span>${d.count ? ` / ${d.count}` : ''}</div>
-    </div>
-  `).join('');
-  container.innerHTML = html;
-}
+  const interval = setInterval(() => {
+    timeLeft--;
+    const mins = Math.floor(timeLeft / 60);
+    const secs = timeLeft % 60;
+    timerDisplay.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
 
-function incrementDhikr(id, card) {
-  const countEl = card.querySelector('[data-count]');
-  let count = parseInt(countEl.getAttribute('data-count')) || 0;
-  count++;
-  countEl.setAttribute('data-count', count);
-  countEl.querySelector('span').textContent = count;
-  
-  try {
-    localStorage.setItem(`dhikr_${id}`, count);
-  } catch (e) {}
-}
-
-// Render scholastic hubs
-function renderGlobe() {
-  const container = document.getElementById('globeContainer');
-  const html = SCHOLASTIC_HUBS.map(hub => `
-    <div class="hub-card animate-in">
-      <h3>${hub.name}</h3>
-      <div style="font-family: Amiri, serif; font-size: 18px; color: var(--gold-dark); margin-bottom: 8px;">${hub.arabic}</div>
-      <span class="region">${hub.region}</span>
-      <ul class="hub-facts">
-        ${hub.facts.map(fact => `<li>${fact}</li>`).join('')}
-      </ul>
-    </div>
-  `).join('');
-  container.innerHTML = html;
-}
-
-// Render quiz
-function renderQuiz() {
-  const container = document.getElementById('quizContainer');
-  const html = QUIZ_QUESTIONS.map((q, idx) => `
-    <div class="quiz-question">
-      <h3>Question ${idx + 1}</h3>
-      <div class="arabic">${q.arabic}</div>
-      <p style="color: var(--ink); margin-bottom: 16px;">${q.question}</p>
-      <ul class="quiz-options">
-        ${q.options.map((opt, i) => `
-          <li>
-            <button class="quiz-option" onclick="selectOption(this, ${i}, ${q.correct}, '${q.explanation}')">
-              ${String.fromCharCode(65 + i)}. ${opt}
-            </button>
-          </li>
-        `).join('')}
-      </ul>
-    </div>
-  `).join('');
-  container.innerHTML = html;
-}
-
-function selectOption(btn, idx, correct, explanation) {
-  const parent = btn.closest('.quiz-question');
-  parent.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  
-  if (!parent.querySelector('.quiz-explanation')) {
-    const exp = document.createElement('p');
-    exp.className = 'quiz-explanation';
-    exp.style.cssText = 'background: var(--bg); padding: 12px; border-radius: var(--radius); margin-top: 12px; color: var(--muted); font-size: 14px;';
-    exp.innerHTML = `<strong>${idx === correct ? '✓ Correct!' : '✗ Not quite.'}</strong> ${explanation}`;
-    parent.appendChild(exp);
-  }
-}
-
-// Init
-document.addEventListener('DOMContentLoaded', () => {
-  setupFilters();
-  setupSearch();
-  renderLabs();
-  renderPillars();
-  renderDhikr();
-  renderGlobe();
-  renderQuiz();
+    if (timeLeft <= 0) {
+      clearInterval(interval);
+      timerRunning = false;
+      startBtn.textContent = 'Done!';
+      startBtn.disabled = false;
+      setTimeout(() => {
+        startBtn.textContent = 'Start';
+        timerDisplay.textContent = '1:00';
+      }, 2000);
+    }
+  }, 1000);
 });
+
+// Initial render
+renderCategoryFilters();
+renderLabs();
+renderDhikrCards();
+
+// Search handler
+document.getElementById('labs-search').addEventListener('input', renderLabs);
 </script>
 
 </body>

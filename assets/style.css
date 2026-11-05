@@ -1301,3 +1301,659 @@ blockquote {
 .transition-slow {
   transition: all 0.3s ease-out;
 }
+
+/* ========== SCROLL SPY INDICATOR ========== */
+#scroll-spy-indicator {
+  position: fixed;
+  right: 20px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 80;
+  font-family: var(--font-sans);
+}
+
+@media (max-width: 1023px) {
+  #scroll-spy-indicator {
+    display: none !important;
+  }
+}
+
+#scroll-spy-indicator.reduce-motion {
+  opacity: 0.5;
+}
+
+.scroll-spy-ring {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-spy-ring svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.scroll-spy-ring .progress-track {
+  stroke: var(--line);
+  stroke-width: 2;
+  fill: none;
+}
+
+.scroll-spy-ring .progress-fill {
+  stroke: var(--gold);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 282.74;
+  stroke-dashoffset: 282.74;
+  transform-origin: 50px 50px;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.scroll-to-top {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--gold);
+  font-weight: bold;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.scroll-to-top:hover {
+  opacity: 1;
+}
+
+.scroll-to-top:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.scroll-spy-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 0 0 8px;
+  border-left: 2px dotted rgba(201, 162, 75, 0.4);
+}
+
+.scroll-spy-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--line);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s;
+  margin-left: -5px;
+}
+
+.scroll-spy-dot:hover {
+  background: var(--gold);
+  transform: scale(1.5);
+}
+
+.scroll-spy-dot.active {
+  background: var(--gold);
+  transform: scale(1.5);
+  box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.2);
+}
+
+.scroll-spy-dot:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ========== HADITH STYLES ========== */
+.content-section {
+  padding: 56px 0;
+}
+
+.tabs-nav {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--line);
+  margin-bottom: 34px;
+  background: var(--surface);
+}
+
+.tab-btn {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--muted);
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  color: var(--ink);
+}
+
+.tab-btn.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+.tab-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -2px;
+}
+
+.tab-panel {
+  display: none;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Hadith grid and cards */
+.hadith-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+  margin-bottom: 34px;
+}
+
+.hadith-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  border-top: 2px solid var(--gold);
+  transition: all 0.2s;
+}
+
+.hadith-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 12px rgba(201, 162, 75, 0.1);
+}
+
+.hadith-number {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.hadith-arabic {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.8;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.hadith-translation {
+  font-size: 16px;
+  color: var(--ink);
+  line-height: 1.65;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+.hadith-source,
+.hadith-grading,
+.hadith-commentary {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+.verification-badge,
+.verified-badge {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.verification-badge {
+  background: rgba(77, 95, 86, 0.1);
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+.verified-badge {
+  background: rgba(201, 162, 75, 0.1);
+  color: var(--gold-dark);
+  border: 1px solid var(--gold);
+}
+
+/* Hadith list rows */
+.hadith-list {
+  display: grid;
+  gap: 16px;
+}
+
+.hadith-row {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  transition: all 0.2s;
+}
+
+.hadith-row:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 75, 0.02);
+}
+
+/* Book filter buttons */
+.book-filter-btn {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.book-filter-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold-dark);
+}
+
+.book-filter-btn.active {
+  background: var(--gold);
+  color: #1b1608;
+  border-color: var(--gold);
+}
+
+/* Topic chips */
+.topic-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topic-chip {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.topic-chip:hover {
+  border-color: var(--gold);
+}
+
+.topic-chip.active {
+  background: var(--gold);
+  color: #1b1608;
+  border-color: var(--gold);
+}
+
+/* Four Imams grid */
+.imams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+}
+
+.imam-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  border-top: 2px solid var(--gold);
+  transition: all 0.2s;
+}
+
+.imam-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 12px rgba(201, 162, 75, 0.1);
+}
+
+.imam-card h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+/* ========== LABS & EXPLORE STYLES ========== */
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.category-filter {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.category-filter:hover {
+  border-color: var(--gold);
+}
+
+.category-filter.active {
+  background: var(--gold);
+  color: #1b1608;
+  border-color: var(--gold);
+}
+
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 34px;
+}
+
+.lab-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  border-top: 2px solid var(--gold);
+  transition: all 0.2s;
+}
+
+.lab-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 12px rgba(201, 162, 75, 0.1);
+}
+
+.lab-card h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.lab-status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lab-status-badge.live {
+  background: rgba(201, 162, 75, 0.1);
+  color: var(--gold-dark);
+}
+
+.lab-status-badge.coming-soon {
+  background: rgba(77, 95, 86, 0.1);
+  color: var(--muted);
+}
+
+.lab-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  background: var(--bg);
+  color: var(--muted);
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Pillar tabs */
+.pillar-panel {
+  display: none;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.pillar-panel.active {
+  display: block;
+}
+
+.pillar-panel h3 {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.pillar-panel h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.pillar-panel p,
+.pillar-panel ol,
+.pillar-panel ul {
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+.pillar-panel ol,
+.pillar-panel ul {
+  color: var(--muted);
+}
+
+.pillar-panel li {
+  margin-bottom: 8px;
+}
+
+/* Dhikr cards */
+.dhikr-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.dhikr-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-top: 2px solid var(--gold);
+}
+
+.dhikr-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(201, 162, 75, 0.1);
+}
+
+.dhikr-phrase {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  direction: rtl;
+}
+
+.dhikr-transliteration {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.dhikr-count {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 8px 0;
+}
+
+.dhikr-meaning {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ========== MODAL STYLES ========== */
+#labs-search {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  background: var(--surface);
+  color: var(--ink);
+  transition: border-color 0.2s;
+}
+
+#labs-search:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+/* ========== RESPONSIVE LABS ========== */
+@media (max-width: 768px) {
+  .labs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hadith-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .imams-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs-nav {
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tab-btn {
+    white-space: nowrap;
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .dhikr-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #scroll-spy-indicator {
+    bottom: 20px;
+    right: 10px;
+  }
+
+  .scroll-spy-ring {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs-nav {
+    gap: 0;
+  }
+
+  .tab-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .dhikr-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .category-filters {
+    flex-direction: column;
+  }
+
+  .category-filter {
+    width: 100%;
+    text-align: center;
+  }
+
+  #scroll-spy-indicator {
+    display: none !important;
+  }
+}
+
+/* ========== ACCESSIBILITY ========== */
+@media (prefers-reduced-motion: reduce) {
+  .tab-panel,
+  .pillar-panel,
+  .hadith-card,
+  .imam-card,
+  .lab-card,
+  .dhikr-card {
+    animation: none !important;
+  }
+
+  .scroll-spy-ring svg,
+  .scroll-spy-dot {
+    transition: none !important;
+  }
+
+  .scroll-to-top,
+  .scroll-spy-dot {
+    animation: none !important;
+  }
+
+  #scroll-spy-indicator {
+    opacity: 0.6;
+  }
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  header,
+  footer,
+  #scroll-spy-indicator,
+  .btn.secondary {
+    display: none;
+  }
+
+  .content-section {
+    padding: 0;
+  }
+
+  .hadith-card,
+  .imam-card,
+  .lab-card {
+    page-break-inside: avoid;
+  }
+}
