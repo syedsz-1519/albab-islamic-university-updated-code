@@ -2081,19 +2081,24 @@ blockquote {
 /* ========== FOCUS CARDS ========== */
 .focus-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
   margin-top: 40px;
 }
 
 .focus-card {
+  aspect-ratio: 1;
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
   border-radius: var(--radius);
   padding: 28px;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .focus-card::before {
@@ -2103,25 +2108,47 @@ blockquote {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(201, 162, 75, 0.03) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(201, 162, 75, 0.08) 0%, transparent 100%);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.35s;
+}
+
+.focus-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(201, 162, 75, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s;
+  pointer-events: none;
 }
 
 .focus-card:hover {
   border-color: var(--gold);
-  transform: translateY(-6px);
-  box-shadow: 0 12px 28px rgba(201, 162, 75, 0.12);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(201, 162, 75, 0.18);
 }
 
 .focus-card:hover::before {
   opacity: 1;
 }
 
+.focus-card:hover::after {
+  opacity: 1;
+}
+
+.focus-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .focus-icon {
-  font-size: 40px;
-  margin-bottom: 16px;
+  font-size: 48px;
+  margin-bottom: 12px;
   display: inline-block;
   animation: slideInDown 0.6s ease-out forwards;
 }
@@ -2136,57 +2163,137 @@ blockquote {
   margin-bottom: 12px;
   color: var(--ink);
   line-height: 1.3;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  animation: slideInDown 0.6s ease-out forwards;
 }
+
+.focus-card:nth-child(1) h3 { animation-delay: 0.15s; }
+.focus-card:nth-child(2) h3 { animation-delay: 0.25s; }
+.focus-card:nth-child(3) h3 { animation-delay: 0.35s; }
+.focus-card:nth-child(4) h3 { animation-delay: 0.45s; }
 
 .focus-card p {
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.65;
-  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+  flex-grow: 1;
+  animation: slideInDown 0.6s ease-out forwards;
 }
+
+.focus-card:nth-child(1) p { animation-delay: 0.2s; }
+.focus-card:nth-child(2) p { animation-delay: 0.3s; }
+.focus-card:nth-child(3) p { animation-delay: 0.4s; }
+.focus-card:nth-child(4) p { animation-delay: 0.5s; }
 
 .focus-accent {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--gold), transparent);
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), rgba(201, 162, 75, 0.3));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 3;
 }
 
 .focus-card:hover .focus-accent {
   transform: scaleX(1);
 }
 
+/* Corner accent on hover */
+.focus-card::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--gold) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s;
+  pointer-events: none;
+}
+
+.focus-card:hover::after {
+  opacity: 0.15;
+}
+
+@media (max-width: 1024px) {
+  .focus-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .focus-card {
+    aspect-ratio: 1;
+    padding: 24px;
+  }
+
+  .focus-icon {
+    font-size: 40px;
+  }
+
+  .focus-card h3 {
+    font-size: 16px;
+  }
+
+  .focus-card p {
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 768px) {
   .focus-cards {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 
   .focus-card {
-    padding: 20px;
+    aspect-ratio: auto;
+    padding: 22px;
+    min-height: auto;
   }
 
   .focus-icon {
-    font-size: 32px;
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  .focus-card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .focus-card p {
+    font-size: 14px;
   }
 
   .focus-card:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.01);
   }
 }
 
 @media (max-width: 480px) {
   .focus-cards {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .focus-card {
-    padding: 18px;
+    padding: 16px;
+    aspect-ratio: auto;
+  }
+
+  .focus-icon {
+    font-size: 32px;
+  }
+
+  .focus-card h3 {
+    font-size: 16px;
   }
 
   .focus-card:hover {
@@ -2206,18 +2313,17 @@ blockquote {
   }
 }
 
-/* Hover effect for cards */
-@keyframes cardHoverGlow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(201, 162, 75, 0.3);
+/* Pulse animation for entry */
+@keyframes cardPulse {
+  0% {
+    transform: scale(0.95);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(201, 162, 75, 0);
+    transform: scale(1);
   }
-}
-
-.focus-card:hover {
-  animation: none;
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Dark mode adjustments */
@@ -2225,14 +2331,16 @@ blockquote {
   .focus-card {
     background: var(--surface);
     border-color: var(--line);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   }
 
   .focus-card::before {
-    background: linear-gradient(135deg, rgba(201, 162, 75, 0.05) 0%, transparent 100%);
+    background: linear-gradient(135deg, rgba(201, 162, 75, 0.1) 0%, transparent 100%);
   }
 
   .focus-card:hover {
-    background: rgba(17, 48, 38, 0.8);
+    background: rgba(17, 48, 38, 0.7);
     border-color: var(--gold);
+    box-shadow: 0 16px 40px rgba(201, 162, 75, 0.25);
   }
 }
