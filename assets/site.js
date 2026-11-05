@@ -1,11 +1,27 @@
 /* ALBAB ISLAMIC UNIVERSITY — SITE.JS */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();
   initHeader();
   initMobileMenu();
   initTabs();
   initFilters();
 });
+
+/* ========== PRELOADER ========== */
+function initPreloader() {
+  const preloader = document.getElementById('preloader');
+  if (!preloader) return;
+  
+  // Show preloader for 10 seconds (10000ms)
+  setTimeout(() => {
+    preloader.classList.add('hide');
+    // Optional: Remove from DOM after fade out completes
+    setTimeout(() => {
+      preloader.style.pointerEvents = 'none';
+    }, 500);
+  }, 10000);
+}
 
 /* ========== MOBILE MENU TOGGLE ========== */
 function initMobileMenu() {
