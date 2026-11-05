@@ -2396,11 +2396,23 @@ blockquote {
 }
 
 /* ========== FOCUS CARDS ========== */
-.focus-cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-  margin-top: 40px;
+#focus .focus-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(201, 162, 75, 0.3);
+  color: #f4efe0;
+}
+
+#focus .focus-card h3 {
+  color: #f4efe0;
+}
+
+#focus .focus-card p {
+  color: #d7e0d6;
+}
+
+#focus .focus-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--gold);
 }
 
 .focus-card {
@@ -2408,7 +2420,7 @@ blockquote {
   background: var(--surface);
   border: 2px solid var(--line);
   border-radius: var(--radius);
-  padding: 28px;
+  padding: 20px;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -2465,7 +2477,7 @@ blockquote {
 
 .focus-icon {
   font-size: 48px;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   display: inline-block;
   animation: slideInDown 0.6s ease-out forwards;
 }
@@ -2542,16 +2554,17 @@ blockquote {
 @media (max-width: 1024px) {
   .focus-cards {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 14px;
   }
 
   .focus-card {
     aspect-ratio: 1;
-    padding: 24px;
+    padding: 18px;
   }
 
   .focus-icon {
     font-size: 40px;
+    margin-bottom: 6px;
   }
 
   .focus-card h3 {
@@ -2566,18 +2579,18 @@ blockquote {
 @media (max-width: 768px) {
   .focus-cards {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
   }
 
   .focus-card {
     aspect-ratio: auto;
-    padding: 22px;
+    padding: 16px;
     min-height: auto;
   }
 
   .focus-icon {
     font-size: 36px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
   }
 
   .focus-card h3 {
