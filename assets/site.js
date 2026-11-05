@@ -2,13 +2,46 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initHeader();
+  initMobileMenu();
   initTabs();
   initFilters();
 });
 
+/* ========== MOBILE MENU TOGGLE ========== */
+function initMobileMenu() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const mainNav = document.getElementById('main-nav');
+  
+  if (menuToggle && mainNav) {
+    menuToggle.addEventListener('click', () => {
+      mainNav.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', mainNav.classList.contains('active'));
+    });
+    
+    // Close menu when a link is clicked
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('active');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('header')) {
+        mainNav.classList.remove('active');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+}
+
 /* ========== HEADER NAV ========== */
 function initHeader() {
-  const nav = document.querySelectorAll('nav a');
+  const nav = document.querySelectorAll('nav a, .main-nav a');
   const currentPath = location.pathname.replace(/\/$/, '') || '/';
   
   nav.forEach(link => {
