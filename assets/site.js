@@ -13,14 +13,24 @@ function initPreloader() {
   const preloader = document.getElementById('preloader');
   if (!preloader) return;
   
-  // Show preloader for 10 seconds (10000ms)
-  setTimeout(() => {
+  const skipBtn = document.getElementById('skip-preloader');
+  
+  // Function to hide preloader
+  function hidePreloader() {
     preloader.classList.add('hide');
-    // Optional: Remove from DOM after fade out completes
+    clearTimeout(preloaderTimer);
     setTimeout(() => {
       preloader.style.pointerEvents = 'none';
     }, 500);
-  }, 10000);
+  }
+  
+  // Skip button click handler
+  if (skipBtn) {
+    skipBtn.addEventListener('click', hidePreloader);
+  }
+  
+  // Show preloader for 5 seconds (5000ms)
+  const preloaderTimer = setTimeout(hidePreloader, 5000);
 }
 
 /* ========== MOBILE MENU TOGGLE ========== */
